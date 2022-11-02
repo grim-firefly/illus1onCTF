@@ -23,10 +23,10 @@ const Header = () => {
 					<div className='d-flex  align-items-center '>
 						<div className='d-flex position-relative' ref={menuRef}>
 							<div className={` ${showLinks ?  `${s.navbar_items_toggler} ${s.navbar_tmp} `:''} ${s.navbar_items}`} id="navbaritems">
-								<div><Link className={`${s.navLink}`} href="/challenges">Dashboard</Link></div>
-								<div><Link className={`${s.navLink}`} href="/challenges">Challenges</Link></div>
-								<div><Link className={`${s.navLink}`} href="/leaderboard">Contest</Link></div>
-								<div><Link className={`${s.navLink}`} href="/profile">Log In</Link></div>
+								<div><Link to="" className={`${s.navLink}`} >Dashboard</Link></div>
+								<div><Link to="" className={`${s.navLink}`}>Challenges</Link></div>
+								<div><Link to="about" className={`${s.navLink}`} >Contest</Link></div>
+								<div><Link to="login" className={`${s.navLink}`}>Log In</Link></div>
 							</div>
 							<button className={`${s.navbar_toggler}`}  onClick={changeVisibity} ><FaBars /></button>
 
@@ -37,9 +37,9 @@ const Header = () => {
 								<img className={`${s.user_img}`} src="https://secure.gravatar.com/avatar/a9d93a0b0dbbbef556a04eefcfd14079.jpg?s=200&d=robohash&r=x" alt="img" srcSet="" />
 							</div>
 							<ul className={`dropdown-menu ${s.dropdownMenu}`} aria-labelledby="useroptions" >
-								<li><a className={`dropdown-item ${s.dropdownitem}`} href="#">Profile</a></li>
-								<li><a className={`dropdown-item ${s.dropdownitem}`} href="#">Hello</a></li>
-								<li><a className={`dropdown-item ${s.dropdownitem}`} href="#">Log out</a></li>
+								<li><Link to="" className={`dropdown-item ${s.dropdownitem}`} >Profile</Link></li>
+								<li><Link to="" className={`dropdown-item ${s.dropdownitem}`} >Hello</Link></li>
+								<li><Link to="" className={`dropdown-item ${s.dropdownitem}`}>Log out</Link></li>
 							</ul>
 						</div>
 

@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import s from './style.module.css';
 import { Link } from 'react-router-dom';
 import { FaBars } from 'react-icons/fa';
+import useDropDownHook from './../../../Hooks/useDropDownHook';
 const Header = () => {
 	const [showLinks, setShowLinks] = React.useState(false);
+	const menuRef = useRef(null);
 	const changeVisibity = () => {
 		setShowLinks(!showLinks);
 	}
+	useDropDownHook(menuRef,showLinks,changeVisibity);
 	return (
 
 		<nav className={`${s.navbar}`}>
@@ -18,7 +21,7 @@ const Header = () => {
 					</div>
 
 					<div className='d-flex  align-items-center '>
-						<div className='d-flex position-relative'>
+						<div className='d-flex position-relative' ref={menuRef}>
 							<div className={` ${showLinks ?  `${s.navbar_items_toggler} ${s.navbar_tmp} `:''} ${s.navbar_items}`} id="navbaritems">
 								<div><Link className={`${s.navLink}`} href="/challenges">Dashboard</Link></div>
 								<div><Link className={`${s.navLink}`} href="/challenges">Challenges</Link></div>

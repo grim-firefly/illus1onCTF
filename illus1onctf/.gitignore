@@ -4,6 +4,8 @@
 /node_modules
 /.pnp
 .pnp.js
+# include 
+/node_modules/bootstrap/
 
 # testing
 /coverage

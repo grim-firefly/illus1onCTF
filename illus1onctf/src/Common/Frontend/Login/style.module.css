@@ -52,3 +52,33 @@
 	transform: translate(0,-50%);
 	background-color: var(--bs-gray-300);
 }
+.othersLogin{
+	display: flex;
+	justify-content:center;
+	align-items: center;
+	column-gap: 10px;
+}
+.socialmedia{
+	font-size: 34px;
+	color: var(--bs-primary);
+}
+.socialmedia:hover{
+	color: var(--bs-primary);
+}
+.socialmedia:nth-child(3){
+	color: var(--bs-secondary);
+}
+.reference{
+	margin-top: 1rem;
+	display: flex;
+	justify-content: center;
+	color: var(--bs-secondary);
+}
+.formFooterLink{
+	text-decoration: none;
+	color: var(--bs-primary);
+}
+.formFooterLink:hover{
+	text-decoration: underline;
+	color: var(--bs-primary);
+}

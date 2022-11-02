@@ -1,19 +1,20 @@
-
-
-.navbar{
+.navbar {
 	height: 50px;
 	display: flex;
 	align-items: center;
 	background-color: #fff;
+	box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1) !important;
 
-		
+
 }
-.nav{
+
+.nav {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 }
-.brand{
+
+.brand {
 	font-size: 28px;
 	text-decoration: none;
 	/* color: #1B98F5; */
@@ -22,20 +23,114 @@
 	font-family: 'Bree Serif', serif;
 
 }
-.brand:hover{
+
+.brand:hover {
 	color: var(--bs-primary);
 }
-.logo_end{
+
+.logo_end {
 	color: var(--bs-primary);
 }
-.navLink{
+
+.navLink {
 	text-decoration: none;
 	color: #000;
 	font-size: 14px;
 	font-weight: 500;
 	padding: 0 10px;
-	
+
+
 }
-.navLink:hover{
+
+.navLink:hover {
 	color: var(--bs-primary);
+}
+
+.dropdownMenu {
+	border-radius: 0.25rem !important;
+	font-size: 14px !important;
+	color: #000 !important;
+	border: none !important;
+	box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1) !important;
+}
+
+.dropdownitem {
+	font-weight: 500 !important;
+
+}
+
+.dropdownitem:hover {
+	background-color: transparent !important;
+	color: var(--bs-primary) !important;
+
+}
+
+.user_btn {
+	width: 40px;
+	height: 40px;
+	border-radius: 500px;
+	background-color: transparent !important;
+	border: 1px solid var(--bs-primary) !important;
+	overflow: hidden;
+}
+
+.user_img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+
+.navbar_toggler {
+	background: transparent;
+	border: none;
+	display: block;
+	padding: 0px 10px;
+}
+
+.navbar_toggler:focus {
+	outline: none;
+	color: var(--bs-primary);
+
+}
+
+.navbar_items {
+	display: none;
+	align-items: center;
+
+}
+
+.navbar_items_toggler {
+	display: flex;
+	flex-direction: column;
+
+}
+
+@media (min-width: 768px) {
+	.navbar_toggler {
+		display: none;
+	}
+
+	.navbar_items {
+		display: flex;
+	}
+
+	.navbar_items_toggler {
+		flex-direction: row;
+	}
+
+
+}
+
+@media(max-width: 768px) {
+	.navbar_tmp {
+		background-color: #fff;
+		box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1) !important;
+		position: absolute;
+		top: 30px;
+		right: 0%;
+		font-size: 24px;
+		padding: 10px 10px;
+
+	}
 }

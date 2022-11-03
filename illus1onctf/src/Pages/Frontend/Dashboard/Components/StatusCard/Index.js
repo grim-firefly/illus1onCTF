@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 const StatusCard = (props) => {
 	return (
 		<Link className={`${s.cardcontainer}`} to={props.url} >
+			
 			<div className={`${s.card}`}>
 				<p className={`${s.cardheading}`}>{props.heading}</p>
 				<div className={`${s.cardbody}`}>{props.body} </div>

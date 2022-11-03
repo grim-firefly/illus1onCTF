@@ -23,7 +23,7 @@ const Header = () => {
 					<div className='d-flex  align-items-center '>
 						<div className='d-flex position-relative' ref={menuRef}>
 							<div className={` ${showLinks ?  `${s.navbar_items_toggler} ${s.navbar_tmp} `:''} ${s.navbar_items}`} id="navbaritems">
-								<div><Link to="dashboard" className={`${s.navLink}`} >Dashboard</Link></div>
+								<div><Link to="/" className={`${s.navLink}`} >Dashboard</Link></div>
 								<div><Link to="" className={`${s.navLink}`}>Challenges</Link></div>
 								<div><Link to="about" className={`${s.navLink}`} >Contest</Link></div>
 								<div><Link to="login" className={`${s.navLink}`}>Log In</Link></div>

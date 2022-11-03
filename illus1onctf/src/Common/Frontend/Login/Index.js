@@ -22,7 +22,7 @@ const Login = () => {
 	return (
 		<div className='container'>
 			<div className='row mt-5'>
-				<div className={`${s.formContainer} col-md-4 mx-auto`}>
+				<div className={`${s.formContainer} col-lg-5 col-md-7 col-sm-10 col-11 col-xl-4 mx-auto`}>
 					<div className={`${s.formHeader}`}>
 						<img className={`${s.formHeaderLogo}`} src={formlogo} alt="" srcSet="" />
 					</div>

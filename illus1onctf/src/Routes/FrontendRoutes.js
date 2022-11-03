@@ -6,8 +6,8 @@ import Login from './../Common/Frontend/Login/Index';
 import Dashboard from './../Pages/Frontend/Dashboard/Index';
 export let FrontendRoutes = (
 	<Route path='/' element={<Home />}>
+		<Route index element={<Dashboard />}/>
 		<Route path='about' element={<About />}/>
 		<Route path='login' element={<Login />}/>
-		<Route path="dashboard" element={<Dashboard />}/>
 	</Route>
 );

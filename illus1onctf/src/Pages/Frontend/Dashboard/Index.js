@@ -5,6 +5,7 @@ import s from './style.module.css';
 import Input from './../../../Common/Frontend/Common/Input/Index';
 import { TfiUser } from 'react-icons/tfi';
 import SidebarContainer from './Components/SidebarContainer/SidebarContainer';
+import ProgressTracker from './Components/ProgressTracker/ProgressTracker';
 const Dashboard = () => {
 	return (
 		<div>
@@ -24,6 +25,15 @@ const Dashboard = () => {
 							</div>
 
 						</div>
+						<div className="row mt-2">
+							<div className="col-12">
+
+								<ProgressTracker />
+							</div>
+
+						</div>
+
+
 					</div>
 					<div className="col-xl-4 col-lg-4  col-12">
 

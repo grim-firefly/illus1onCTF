@@ -1,0 +1,19 @@
+.progressContainer{
+	background-color: #fff;
+	border-radius: 0.25rem;
+	padding: 1rem;
+
+}
+
+
+.progressHeading{
+	font-size: 1.5rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: var(--bs-secondary);
+	margin-bottom: 1rem;
+}
+.progressHeadingIcon{
+	margin-right: 0.5rem;
+}

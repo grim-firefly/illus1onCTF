@@ -75,7 +75,9 @@
 	color: var(--bs-secondary);
 }
 .formFooterLink{
-	text-decoration: none;
+	background-color: transparent;
+	border: none;
+	
 	color: var(--bs-primary);
 }
 .formFooterLink:hover{

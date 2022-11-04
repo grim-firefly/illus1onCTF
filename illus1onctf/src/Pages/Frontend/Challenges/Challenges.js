@@ -5,7 +5,7 @@ const Challenges = () => {
 	return (
 		<div className='container'>
 			<div className="row mt-2">
-				<div className="col-md-5 col-lg-4 col-xl-4  ">
+				<div className="col-md-5 col-lg-4 col-xl-3  ">
 					<div className="">
 						<Filters/>
 					</div>

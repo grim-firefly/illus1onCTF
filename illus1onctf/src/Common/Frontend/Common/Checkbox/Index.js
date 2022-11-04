@@ -2,9 +2,9 @@ import React from 'react';
 
 const Checkbox = (props) => {
 	return (
-		<div class="form-check">
-			<input class="form-check-input" type="checkbox" value="" id={props.id} />
-			<label class="form-check-label" for={props.id}>
+		<div className="form-check">
+			<input className="form-check-input" type="checkbox" value="" id={props.id} />
+			<label className="form-check-label" htmlFor={props.id}>
 				{props.label}
 			</label>
 		</div>

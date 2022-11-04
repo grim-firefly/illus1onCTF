@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import s from './style.module.css';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { FaBars } from 'react-icons/fa';
 import useDropDownHook from './../../../Hooks/useDropDownHook';
 const Header = () => {
@@ -17,16 +17,16 @@ const Header = () => {
 			
 				<div className={`${s.nav}`}>
 					<div>
-						<Link className={`${s.brand}`} href="/">illus1on<span className={`${s.logo_end}`}>CTF</span></Link>
+						<Link className={`${s.brand}`} to="/">illus1on<span className={`${s.logo_end}`}>CTF</span></Link>
 					</div>
 
 					<div className='d-flex  align-items-center '>
 						<div className='d-flex position-relative' ref={menuRef}>
 							<div className={` ${showLinks ?  `${s.navbar_items_toggler} ${s.navbar_tmp} `:''} ${s.navbar_items}`} id="navbaritems">
-								<div><Link to="/" className={`${s.navLink}`} >Dashboard</Link></div>
-								<div><Link to="challenges" className={`${s.navLink}`}>Challenges</Link></div>
-								<div><Link to="about" className={`${s.navLink}`} >Contest</Link></div>
-								<div><Link to="login" className={`${s.navLink}`}>Log In</Link></div>
+								<div><NavLink to="/" className={`${s.navLink}`} >Dashboard</NavLink></div>
+								<div><NavLink to="challenges" className={`${s.navLink}`}>Challenges</NavLink></div>
+								<div><NavLink to="about" className={`${s.navLink}`} >Contest</NavLink></div>
+								<div><NavLink to="login" className={`${s.navLink}`}>Log In</NavLink></div>
 							</div>
 							<button className={`${s.navbar_toggler}`}  onClick={changeVisibity} ><FaBars /></button>
 

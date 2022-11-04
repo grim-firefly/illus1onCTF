@@ -7,9 +7,11 @@ import Dashboard from './../Pages/Frontend/Dashboard/Index';
 import Challenges from './../Pages/Frontend/Challenges/Challenges';
 export let FrontendRoutes = (
 	<Route path='/' element={<Home />}>
-		<Route index element={<Dashboard />}/>
-		<Route path='about' element={<About />}/>
-		<Route path='login' element={<Login />}/>
-		<Route path='challenges' element={<Challenges />}/>
+		<Route index element={<Dashboard />} />
+		<Route path='about' element={<About />} />
+		<Route path='login' element={<Login />} />
+		<Route path='challenges' element={<Challenges />}>
+			
+		</Route>
 	</Route>
 );

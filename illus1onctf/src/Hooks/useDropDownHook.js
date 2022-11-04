@@ -14,5 +14,5 @@ export default function useDropDownHook(ref, state, handler) {
 				document.removeEventListener('mousedown', listener);
 			}
 		}
-	}, [ref, handler]);
+	}, [ref,state, handler]);
 }

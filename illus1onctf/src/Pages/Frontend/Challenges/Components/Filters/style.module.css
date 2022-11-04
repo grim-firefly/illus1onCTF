@@ -1,0 +1,23 @@
+.filters{
+	background-color: #ffffff;
+	border-radius:0.25rem;
+	color: var(--bs-secondary);
+	padding: 1rem;
+	
+}
+.filtersHeading{
+	font-size: 1.25rem;
+	font-weight: 900 !important;
+	font-family: 'Bree Serif', serif;
+	margin-bottom: .5rem;
+	letter-spacing: 2px;
+}
+.filterbody{
+	padding: 1rem;
+}
+.filterbodyheading{
+	font-size: 1.25rem;
+	font-weight: 500;
+	letter-spacing: 1px;
+	margin-bottom: .5rem;
+}

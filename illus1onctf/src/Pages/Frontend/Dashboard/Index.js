@@ -13,14 +13,14 @@ const Dashboard = () => {
 				<div className="row">
 					<div className="col-xl-8 col-lg-8 col-12">
 						<div className="row mt-2">
-							<div className="col-12 col-lg-6 col-xl-4 my-1">
+							<div className="col-12 col-lg-6 col-xl-4 mb-1">
 								<StatusCard url="/login" heading="Challenges Rank" body={`Solved : 17 / 1700`} footer={`Rank : 1707`} />
 							</div>
-							<div className="col-12  col-lg-6 col-xl-4 my-1">
+							<div className="col-12  col-lg-6 col-xl-4 mb-1">
 								<StatusCard url="/login" heading="Contest Rank" body={`Participated : 10 Contest`} footer={`Rank : 13`} />
 
 							</div>
-							<div className="col-12  col-lg-6 col-xl-4 my-1">
+							<div className="col-12  col-lg-6 col-xl-4 mb-1">
 								<StatusCard url="/login" heading="Contribution Point" body={`Score : 1700`} footer={`Rank : 3`} />
 							</div>
 

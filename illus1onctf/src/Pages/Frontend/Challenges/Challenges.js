@@ -1,9 +1,19 @@
 import React from 'react';
+import Filters from './Components/Filters/Filters';
 
-const Challenges= () => {
+const Challenges = () => {
 	return (
 		<div className='container'>
-			This is Challenges
+			<div className="row mt-2">
+				<div class="col-md-5 col-lg-4 col-xl-4  ">
+					<div className="">
+						<Filters/>
+					</div>
+
+				</div>
+				<div class="col-md-7 col-lg-8 col-xl-8 bg-primary">s
+				</div>
+			</div>
 		</div>
 	);
 }

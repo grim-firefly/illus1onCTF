@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import s from './style.module.css';
 import { Link, NavLink } from 'react-router-dom';
 import { FaBars } from 'react-icons/fa';
-import useDropDownHook from './../../../Hooks/useDropDownHook';
+import useDropDownHook from './../../Hooks/useDropDownHook';
 const Header = () => {
 	const [showLinks, setShowLinks] = React.useState(false);
 	const menuRef = useRef(null);

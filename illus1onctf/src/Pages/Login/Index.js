@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Input from './../Common/Input/Index';
 import { TfiUser } from 'react-icons/tfi';
 import { RiLockPasswordLine, RiLockPasswordFill } from 'react-icons/ri';
 import { TfiEmail } from 'react-icons/tfi';
@@ -7,8 +6,9 @@ import { TfiEmail } from 'react-icons/tfi';
 import { FcGoogle } from 'react-icons/fc';
 import { BsFacebook, BsGithub } from 'react-icons/bs';
 import s from './style.module.css';
-import formlogo from './../../../Assets/Images/illus1onCTF.png';
+import formlogo from './../../Assets/Images/illus1onCTF.png';
 import { Link } from 'react-router-dom';
+import Input from './../../Common/Input/Index';
 const Login = () => {
 	const [signup, setSignup] = useState(false);
 	const [forgotPassword, setForgotPassword] = useState(false);

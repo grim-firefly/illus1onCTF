@@ -1,11 +1,12 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Error from './Components/Error';
-import Home from './../Pages/Frontend/Home/Index';
-import Dashboard from './../Pages/Frontend/Dashboard/Index';
-import About from './../Pages/Frontend/About/Index';
-import Login from './../Common/Frontend/Login/Index';
-import Challenges from './../Pages/Frontend/Challenges/Challenges';
+import Home from './../Pages/Home/Index';
+import Dashboard from './../Pages/Dashboard/Index';
+import About from './../Pages/About/Index';
+import Challenges from './../Pages/Challenges/Challenges';
+import Login from './../Pages/Login/Index';
+
 
 
 const MainRoutes = () => {

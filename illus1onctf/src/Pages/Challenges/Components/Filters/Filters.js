@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import s from './style.module.css';
-import Input from './../../../../../Common/Frontend/Common/Input/Index';
 import { BsSearch } from 'react-icons/bs';
-import Checkbox from './../../../../../Common/Frontend/Common/Checkbox/Index';
+import Checkbox from './../../../../Common/Checkbox/Index';
+import Input from './../../../../Common/Input/Index';
 
 
 const lists = [

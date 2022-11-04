@@ -1,11 +1,11 @@
 import React from 'react';
-import StatusCard from './Components/StatusCard/Index';
 import { Link } from 'react-router-dom';
 import s from './style.module.css';
-import Input from './../../../Common/Frontend/Common/Input/Index';
 import { TfiUser } from 'react-icons/tfi';
-import SidebarContainer from './Components/SidebarContainer/SidebarContainer';
+import StatusCard from './Components/StatusCard/Index';
 import ProgressTracker from './Components/ProgressTracker/ProgressTracker';
+import SidebarContainer from './Components/SidebarContainer/SidebarContainer';
+import Input from './../../Common/Input/Index';
 const Dashboard = () => {
 	return (
 		<div>

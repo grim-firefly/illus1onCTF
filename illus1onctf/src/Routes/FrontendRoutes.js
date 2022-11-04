@@ -4,10 +4,12 @@ import Home from './../Pages/Frontend/Home/Index';
 import About from './../Pages/Frontend/About/Index';
 import Login from './../Common/Frontend/Login/Index';
 import Dashboard from './../Pages/Frontend/Dashboard/Index';
+import Challenges from './../Pages/Frontend/Challenges/Challenges';
 export let FrontendRoutes = (
 	<Route path='/' element={<Home />}>
 		<Route index element={<Dashboard />}/>
 		<Route path='about' element={<About />}/>
 		<Route path='login' element={<Login />}/>
+		<Route path='challenges' element={<Challenges />}/>
 	</Route>
 );

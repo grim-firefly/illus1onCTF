@@ -8,6 +8,7 @@ export default function useDropDownHook(ref, state, handler) {
 			}
 			handler(event);
 		}
+		
 		if (state) {
 			document.addEventListener('mousedown', listener);
 			return () => {

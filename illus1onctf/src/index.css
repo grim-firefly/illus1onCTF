@@ -11,5 +11,9 @@ body {
 :root {
 
 	--bs-primary: #1B98F5 !important;
+	--bs-btn-bg: #1B98F5;
+	--bs-btn-border-color: #1B98F5;
+	--bs-btn-disabled-bg: #1B98F5;
+	--bs-btn-disabled-border-color: #1B98F5;
 
 }

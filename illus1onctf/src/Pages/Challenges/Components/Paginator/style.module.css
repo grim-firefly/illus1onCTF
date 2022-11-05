@@ -25,11 +25,13 @@
 	color: var(--bs-secondary);
 	overflow: hidden;
 }
-.pageitem:hover{
+
+.pageitem:hover:not(.active) {
 	color: var(--bs-primary);
 	background: #f5f5f5;
 }
-.active{
+
+.active {
 	background-color: var(--bs-primary);
 	box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
 	color: #fff;

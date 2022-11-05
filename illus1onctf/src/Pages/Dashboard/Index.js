@@ -53,7 +53,7 @@ const Dashboard = () => {
 								<div className='px-2 py-2 pb-3'>
 									<Input name="username" placeholder="username" icon={TfiUser} />
 									<div className='mt-1 d-flex flex-row-reverse'>
-										<button className={`btn btn-outline-primary mt-1 ${s.sidecardBodyfooter}`}   >Search</button>
+										<button className={`btn btn-outline-primary mt-1 ${s.sidecardBodybtn}`}   >Search</button>
 									</div>
 								</div>
 

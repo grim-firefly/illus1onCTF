@@ -48,7 +48,7 @@
 
 .sidecardBodybtn:hover {
 	background-color: var(--bs-primary) !important;
-	color: #fff;
+	color: #fff !important;
 }
 
 .sidecardBodyfooter {

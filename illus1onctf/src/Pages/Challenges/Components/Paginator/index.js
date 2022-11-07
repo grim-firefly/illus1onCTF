@@ -11,9 +11,10 @@ const Paginator = () => {
 		const index = pageStart + idx;
 		const start = Math.max(0, Math.min(index - 3, page.length - 7));
 		const end = Math.min(page.length, start + 7);
-		const tmpidx=start+idx;
-		const tmpacive=(tmpidx<3 || tmpidx>page.length-3) ? idx :1 ;
-		const active = start == pageStart ? idx : 3 ;
+		const tmpidx = start + idx;
+		const tmpacive = tmpidx < 3 ? pageStart + idx : (tmpidx > page.length - 3 ? pageStart + idx - start : 3);
+
+		const active = start == pageStart ? idx : tmpacive;
 		setPageStart(start);
 		setPageActive(active);
 		setPageEnd(end);

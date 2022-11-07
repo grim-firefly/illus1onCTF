@@ -3,11 +3,10 @@ import s from './style.module.css';
 import { FiUser, FiUserCheck } from 'react-icons/fi';
 import { AiOutlineLike } from 'react-icons/ai';
 import { useEffect, useState } from 'react';
-const ChallengeCard = ({ data }) => {
-
+const ChallengeCard = (props) => {
+	const {data,...cardprops}=props;
 	return (
-		<div className={`${s.card} ${data.solved ? s.solved : ''}`}>
-
+		<div className={`${s.card} ${data.solved ? s.solved : ''}`}  {...cardprops} >
 			<div className={`${s.cardHeader}`}>
 				<div>{data.category}</div>
 				<div ><i className={`${s.cardHeaderIcon}`}>{data.solved ? <FiUserCheck /> : < FiUser />} </i> | {data.point} points</div>

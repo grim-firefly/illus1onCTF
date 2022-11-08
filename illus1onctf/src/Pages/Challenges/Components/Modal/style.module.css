@@ -1,25 +1,29 @@
-
-.modalbody{
+.modalbody {
 	color: var(--bs-secondary);
 }
-.headerTop{
+
+.headerTop {
 	padding-bottom: 0px !important;
 	border-bottom: none !important;
 }
-.headerbottom{
-	padding:0.5rem 1rem;
+
+.headerbottom {
+	padding: 0.5rem 1rem;
 	font-size: 0.75rem;
 	border-bottom: 1px solid var(--bs-gray-300);
 }
-.author{
+
+.author {
 	color: var(--bs-secondary);
 	text-transform: uppercase;
 	margin-bottom: 0.35rem;
 }
-.authortitle{
+
+.authortitle {
 	font-weight: 500;
 }
-.bookmarkbtn{
+
+.bookmarkbtn {
 	background: transparent;
 	border: 1px solid var(--bs-gray-300);
 	color: var(--bs-primary);
@@ -28,11 +32,13 @@
 	transition: all 100ms linear;
 
 }
-.bookmarkbtn:hover{
+
+.bookmarkbtn:hover {
 	border: 1px solid var(--bs-primary);
 	box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25);
 }
-.bookmarkremovebtn{
+
+.bookmarkremovebtn {
 	background: transparent;
 	border: 1px solid var(--bs-gray-300);
 	color: #FFFFFF;
@@ -42,44 +48,50 @@
 	transition: all 100ms linear;
 
 }
-.closebtn{
+
+.closebtn {
 	background: transparent;
 	border: none;
 	color: var(--bs-primary);
 	border-radius: 0.25rem;
 	padding: 0px;
 	font-size: 1.25rem;
-	color: rgba(255, 0, 0, 0.6) ;
+	color: rgba(255, 0, 0, 0.6);
 }
-.closebtn:hover{
+
+.closebtn:hover {
 	color: rgba(255, 0, 0);
 
 }
-.cardSolvedIcon{
+
+.cardSolvedIcon {
 	font-size: 1.25rem;
 }
-.tagLink{
+
+.tagLink {
 	text-decoration: none;
-	color:#FFFFFF;
+	color: #FFFFFF;
 	background-color: var(--bs-primary);
 	border-radius: 0.25rem;
 	padding: 0.125rem 0.5rem;
 	transition: all 150ms linear;
 }
-.tagLink:hover{
+
+.tagLink:hover {
 	color: #FFFFFF;
 	box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25);
 }
-.likestatus{
+
+.likestatus {
 	background-color: var(--bs-gray-600);
 	color: #FFFFFF;
 	display: flex;
-	justify-content: space-between;
 	align-items: center;
 	padding: 1rem;
 	text-transform: capitalize;
 }
-.likeDislike{
+
+.likeDislike {
 	color: var(--bs-primary);
 	background-color: transparent;
 	border: none;
@@ -91,7 +103,8 @@
 	/* line-height: 2rem; */
 	border-radius: 5rem;
 }
-.likeDislike:hover{
+
+.likeDislike:hover {
 	color: #FFFFFF;
 	background-color: var(--bs-primary);
 	box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25);

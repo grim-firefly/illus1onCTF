@@ -7,6 +7,7 @@ import About from './../Pages/About/Index';
 import Challenges from './../Pages/Challenges/Challenges';
 import Login from './../Pages/Login/Index';
 import ChallengeList from './../Pages/Challenges/Components/ChallengeList/Index';
+import Contest from './../Pages/Contest/Index';
 
 
 
@@ -14,11 +15,12 @@ const MainRoutes = () => {
 	return (
 		<Routes>
 			<Route path='/' element={<Home />}>
-				<Route index element={<Dashboard />} />
-				<Route path='about' element={<About />} />
+				<Route index element={<About />} />
+				<Route path='dashboard' element={<Dashboard />} />
 				<Route path='login' element={<Login />} />
+				<Route path='contest' element={<Contest />} />
 				<Route path='challenges' element={<Challenges />}>
-					<Route path=':category' element={<Challenges/>} />
+					<Route path=':category' element={<Challenges />} />
 				</Route>
 			</Route>
 			<Route path='*' element={<Error />} />

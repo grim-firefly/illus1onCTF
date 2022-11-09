@@ -15,5 +15,16 @@ body {
 	--bs-btn-border-color: #1B98F5;
 	--bs-btn-disabled-bg: #1B98F5;
 	--bs-btn-disabled-border-color: #1B98F5;
+	--bs-secondary: #222a42 !important;
 
+}
+
+.normalurl {
+	color: var(--bs-primary) !important;
+	text-decoration: none;
+}
+
+.normalurl:hover {
+	color: var(--bs-primary) !important;
+	text-decoration: underline;
 }

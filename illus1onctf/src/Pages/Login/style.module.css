@@ -15,11 +15,9 @@
 .fogotpassword{
 	text-decoration: none;
 	color: var(--bs-primary);
-
-	color:var(--bs-secondary);
 }
 .fogotpassword:hover{
-	color: var(--bs-primary);
+	text-decoration: underline;
 }
 .separator{
 	text-align: center;

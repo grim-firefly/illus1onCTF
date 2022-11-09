@@ -23,9 +23,10 @@ const Header = () => {
 					<div className='d-flex  align-items-center '>
 						<div className='d-flex position-relative' ref={menuRef}>
 							<div className={` ${showLinks ?  `${s.navbar_items_toggler} ${s.navbar_tmp} `:''} ${s.navbar_items}`} id="navbaritems">
-								<div><NavLink to="/" className={`${s.navLink}`}  onClick={()=>setShowLinks(false)} >Dashboard</NavLink></div>
+								<div><NavLink to="dashboard" className={`${s.navLink}`}  onClick={()=>setShowLinks(false)} >Dashboard</NavLink></div>
 								<div><NavLink to="challenges"  onClick={()=>setShowLinks(false)} className={`${s.navLink}`}>Challenges</NavLink></div>
-								<div><NavLink to="about" onClick={()=>setShowLinks(false)} className={`${s.navLink}`} >Contest</NavLink></div>
+								<div><NavLink to="contest" onClick={()=>setShowLinks(false)} className={`${s.navLink}`} >Contest</NavLink></div>
+								<div><NavLink to="leaderboard" onClick={()=>setShowLinks(false)} className={`${s.navLink}`} >LeaderBoard</NavLink></div>
 								<div><NavLink to="login"  onClick={()=>setShowLinks(false)} className={`${s.navLink}`}>Log In</NavLink></div>
 							</div>
 							<button className={`${s.navbar_toggler}`}  onClick={changeVisibity} ><FaBars /></button>

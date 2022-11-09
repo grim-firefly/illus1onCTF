@@ -6,6 +6,7 @@ import StatusCard from './Components/StatusCard/Index';
 import ProgressTracker from './Components/ProgressTracker/ProgressTracker';
 import SidebarContainer from './Components/SidebarContainer/SidebarContainer';
 import Input from './../../Common/Input/Index';
+import OutlineButton from './../../Common/Button/Outline/Index';
 const Dashboard = () => {
 	return (
 		<div>
@@ -42,7 +43,7 @@ const Dashboard = () => {
 								<h4 className={`${s.sidecardBodyTitle}`}>Before Contest</h4>
 								<Link className={`${s.sidecardBodyLink}`}>illus1onCTF Round #832 ( Div. 2)</Link>
 								<p className={`${s.sidecardBodyTimer}`}>25:50:54</p>
-								<Link className={`btn btn-outline-primary ${s.sidecardBodybtn}`}>Register now</Link>
+								<Link><OutlineButton title="Register" /></Link>
 								<h6 className={`${s.sidecardBodyfooter}`}>*has extra registration</h6>
 							</SidebarContainer>
 						</div>
@@ -53,7 +54,7 @@ const Dashboard = () => {
 								<div className='px-2 py-2 pb-3'>
 									<Input name="username" placeholder="username" icon={TfiUser} />
 									<div className='mt-1 d-flex flex-row-reverse'>
-										<button className={`btn btn-outline-primary mt-1 ${s.sidecardBodybtn}`}   >Search</button>
+										<OutlineButton title="Search" classname="mt-1" />
 									</div>
 								</div>
 

@@ -72,11 +72,11 @@ const Modal = () => {
 							Corrupti ipsa voluptatum ducimus nesciunt ea. Est voluptatibus dolorum debitis, ipsam dolor quas quo optio saepe ducimus minus corporis quisquam sit commodi error voluptate laborum perferendis. Ut minima officia veniam!
 							Voluptatibus error, quaerat id laborum, magnam mollitia obcaecati, voluptatem nisi earum facere quos omnis? Optio necessitatibus dolore, iure quos sit, temporibus culpa unde odio beatae illum, ut reiciendis repudiandae tempora.
 						</div>
-						<div className={`${s.likestatus}`}>
-							<div>
+						<div className={`${s.likestatus} row`}>
+							<div className='col-sm-8 col-12'>
 								137,671 solves / 141,523 users attempted (97%)
 							</div>
-							<div className='d-flex align-items-center'>
+							<div className='d-flex align-items-center col-sm-4 col-12'>
 								<button className={`${s.likeDislike}`}><BiDislike/></button>
 								<div className='px-1'>89% Liked</div>
 								<button className={`${s.likeDislike}`}><BiLike/></button>

@@ -3,7 +3,7 @@ import React from 'react';
 const Progress = (props) => {
 	return (
 		<div className={`row align-items-center my-1`}>
-			<div className='col-6 text-secondary'>
+			<div className='col-6 '>
 				{props.title}
 			</div>
 			<div className='col-6'>

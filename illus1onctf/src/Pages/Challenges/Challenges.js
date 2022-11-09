@@ -1,7 +1,7 @@
 import React from 'react';
 import Filters from './Components/Filters/Filters';
 import ChallengeCard from './Components/ChallengeCard/ChallengeCard';
-import Paginator from './Components/Paginator/index';
+import Paginator from '../../Common/Paginator/index';
 import Modal from './Components/Modal/Index';
 import { useParams } from 'react-router-dom';
 import ChallengeList from './Components/ChallengeList/Index';

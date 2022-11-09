@@ -7,12 +7,12 @@ import OutlineButton from './../../../../Common/Button/Outline/Index';
 
 
 const lists = [
-	"All Categories",
-	"Web Exploitation",
-	"Binary exploitation",
-	"Web Exploitation",
-	"Web Exploitation",
-	"Web Exploitation",
+	"All",
+	"Featured",
+	"Current",
+	"History",
+	"Training",
+	"Calender",
 ]
 
 
@@ -25,26 +25,23 @@ const Filters = () => {
 	return (
 		<div className={`${s.filters}`}>
 			<div className={`${s.filtersHeading}`}>Filters</div>
-			<div className={`${s.filterbody}`}>
-				<Checkbox label="Hide Solved" id="hidesolved" />
-				<Checkbox label="Show Bookmarked Solved" id="showbookmarked" />
-			</div>
+
 			<div className={`${s.filterbody}`}>
 				<Input type="text" placeholder="Search By Name" name="searchchallenges" icon={BsSearch} />
 			</div>
 			<div className={`${s.filterbody}`}>
-				<div className={`${s.filterbodyheading}`}>Create a Challenge</div>
+				<div className={`${s.filterbodyheading}`}>Organize a Contest</div>
 				<div className={`${s.filterbody} p-0`}>
 					<div>
-						Want to contribute on illus1onCTF? Please send us a message and we will get in touch with you.
+					Want to host a contest on illus1onCTF? Please send us a message and we will get in touch with you.
 					</div>
 					<div >
-						<OutlineButton title="Make a Request" classname="mt-2" />
+						<OutlineButton title="Make a Request" classname="mt-2"/>
 					</div>
 				</div>
 			</div>
 			<div className={`${s.filterbody}`}>
-				<div className={`${s.filterbodyheading}`}>Category Filter</div>
+				{/* <div className={`${s.filterbodyheading}`}>Type Filter</div> */}
 				<ul className={`${s.filterlistgroup}`}>
 					{
 						lists.map((list, index) => (
@@ -53,15 +50,7 @@ const Filters = () => {
 					}
 				</ul>
 			</div>
-			<div className={`${s.filterbody}`}>
-				<div className={`${s.filterbodyheading}`}>Filter By Point</div>
-				<div className={`${s.minmax} d-flex flex-row`}>
-					<Input type="text" placeholder="Min" name="minpoint" />
-					<div className='px-3'>To</div>
-					<Input type="text" placeholder="Max" name="maxpont" />
-
-				</div>
-			</div>
+			
 		</div>
 
 	);

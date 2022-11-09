@@ -1,10 +1,8 @@
 import React from 'react';
-import { Link, Outlet } from 'react-router-dom';
 import Paginator from '../../Common/Paginator';
-import OutlineButton from './../../Common/Button/Outline/Index';
 import Filters from './Components/Filters/Filters';
 
-const Contest = () => {
+const Leaderboard = () => {
 	return (
 		<div>
 			<div className='container'>
@@ -32,4 +30,4 @@ const Contest = () => {
 		</div>
 	);
 }
-export default Contest;
+export default Leaderboard;

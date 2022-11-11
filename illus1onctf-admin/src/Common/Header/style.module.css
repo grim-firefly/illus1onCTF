@@ -3,12 +3,14 @@
 	display: flex;
 	align-items: center;
 	background-color: #fff;
-	box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1) !important;
+	/* box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1) !important; */
 
 
 }
 
 .nav {
+	padding: 0px 1rem;
+	width: 100%;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -86,27 +88,4 @@
 }
 
 
-.navbar_toggler {
-	background: transparent;
-	border: none;
-	display: block;
-	padding: 0px 10px;
-}
-
-.navbar_toggler:focus {
-	outline: none;
-	color: var(--bs-primary);
-
-}
-
-.navbar_items {
-	align-items: center;
-
-}
-
-.navbar_items_toggler {
-	display: flex;
-	flex-direction: column;
-
-}
 

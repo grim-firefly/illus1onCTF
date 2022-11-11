@@ -28,3 +28,15 @@ body {
 	color: var(--bs-primary) !important;
 	text-decoration: underline;
 }
+
+.row {
+
+	margin-left: 0px !important;
+	margin-right: 0px !important;
+	/* padding: 0 !important; */
+}
+
+/* .row>* {
+	padding-right: 0 !important;
+	padding-left: 0 !important;
+} */

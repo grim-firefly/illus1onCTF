@@ -18,7 +18,7 @@ const sidebaritems = [
 	{
 		icon: BiCategory,
 		name: "Category",
-		url: ""
+		url: "categories"
 	},
 	{
 		name: 'Users',

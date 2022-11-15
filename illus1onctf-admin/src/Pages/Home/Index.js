@@ -19,9 +19,7 @@ const Home = () => {
 				</div>
 				<div className='flex-grow-1'>
 					<Header />
-					<div className='row'>
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio omnis dolorum quae possimus voluptates illo assumenda unde voluptatibus animi ducimus sunt doloremque, quibusdam officia rem a repudiandae reiciendis, consequuntur veritatis!
-					</div>
+					
 					<Outlet />
 				</div>
 			</div>

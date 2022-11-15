@@ -16,6 +16,7 @@ const Header = () => {
 
 			<div className={`${s.nav}`}>
 				<div>
+					
 					<Link className={`${s.brand}`} to="/">illus1on<span className={`${s.logo_end}`}>CTF</span></Link>
 				</div>
 

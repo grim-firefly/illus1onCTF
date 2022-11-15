@@ -8,6 +8,7 @@
 	align-items: center;
 	gap: 1rem;
 	padding: 0.5rem 1rem;
+
 	text-decoration: none;
 	/* position: relative; */
 	color: var(--bs-secondary);
@@ -16,6 +17,7 @@
 
 .linkicon {
 	font-size: 1.25rem;
+
 }
 
 .linktext {

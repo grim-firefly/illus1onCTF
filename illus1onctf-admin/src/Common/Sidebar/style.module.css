@@ -1,22 +1,9 @@
 .sidebarContainer {
-	background-color: #FFFFFF;
-	transition: 300ms;
-	width: 50px;
-
-}
-
-.sidebarwidthcontroll {
-	width: 250px;
-}
-
-@media(max-width: 576px) {
-
-	.sidebarwidthcontroll {
-		width: 50px;
-	}
-	.sidebar{
-		position: fixed;
-	}
+	background-color: #FFF;
+	height: calc(100vh - 50px);
+	position: sticky;
+	top: 50px;
+	left:0;
 
 }
 
@@ -25,25 +12,42 @@
 	border: none;
 	color: var(--bs-secondary);
 	font-size: 1.25rem;
+	width: 50px;
 	height: 50px;
 	line-height: 50px;
 	padding: 0 1rem;
+	position: absolute;
+	top: -50px;
 }
 
 .sidebar {
-	/* position: fixed; */
-	position: relative;
-	z-index: 1111111111111111111;
-	width: 250px;
 	width: 50px;
-	background-color: #FFFFFF;
 	overflow-y: scroll;
-	height: calc(100vh - 50px);
 	transition: all 300ms linear;
+	background-color: #fff;
+	height: 100% !important;
+	
 
+	
 }
+
+
+.sidebarController {
+	width: 250px !important;
+	height: 100%;
+}
+
+@media(max-width: 576px) {
+	.sidebar {
+		position: fixed;
+		top: 50px;
+		left:0px;
+	}
+}
+
+
+
 
 .sidebar::-webkit-scrollbar {
 	display: none;
 }
-

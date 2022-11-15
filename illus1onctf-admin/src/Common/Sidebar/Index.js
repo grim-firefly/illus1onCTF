@@ -24,22 +24,27 @@ const sidebaritems = [
 		name: 'Users',
 		icon: TfiUser,
 		url: 'login'
-	}
+	},
+	
 ]
 const Sidebar = () => {
 	const [showMenu, setShowMenu] = useState(false);
 	return (
-		<div className={`${s.sidebarContainer} ${showMenu ? s.sidebarwidthcontroll : ''}`} >
-			<button onClick={() => setShowMenu(!showMenu)} className={`${s.sidebartogglebtn}`}>{showMenu ? <ImCross /> : <GoThreeBars />}</button>
-			<div className={`${s.sidebar}`} style={{ width: (showMenu ? '250px' : '') }}>
+		<div>
+			<div className={`${s.sidebarContainer}`} >
+				<button onClick={() => setShowMenu(!showMenu)} className={`${s.sidebartogglebtn}`}>{showMenu ? <ImCross /> : <GoThreeBars />}</button>
+				<div className={`${s.sidebar} ${showMenu ? s.sidebarController : ''}`} >
+					<div className={`${s.sidebaritems}`}>
+						{
+							sidebaritems.map((item, index) => (
+								<SidebarItem key={index} icon={item.icon} name={item.name} url={item.url} />
 
-				{
-					sidebaritems.map((item, index) => (
-						<SidebarItem key={index} icon={item.icon} name={item.name} url={item.url} />
+							))
+						}
+					</div>
 
-					))
-				}
 
+				</div>
 			</div>
 		</div>
 	);

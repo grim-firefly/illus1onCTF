@@ -7,20 +7,15 @@ import Sidebar from './../../Common/Sidebar/Index';
 const Home = () => {
 	return (
 		<>
+			<Header />
 
 			<div className='d-flex'>
-				<div className="">
-					<div>
-						<Sidebar />
-
-					</div>
+				<Sidebar />
 
 
-				</div>
 				<div className='flex-grow-1'>
-					<Header />
-					
 					<Outlet />
+
 				</div>
 			</div>
 

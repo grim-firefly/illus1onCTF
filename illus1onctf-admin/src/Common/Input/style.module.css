@@ -1,7 +1,8 @@
-.inputbox_container{
+.inputbox_container {
 	position: relative;
 }
-.inpuxbox{
+
+.inpuxbox {
 	width: 100%;
 	outline: none;
 	border: 1px solid #ccc;
@@ -9,13 +10,16 @@
 	padding: 6px 0px;
 	padding-left: 36px;
 }
-.inputbox_icon{
+
+.inputbox_icon {
 	position: absolute;
 	top: 50%;
 	left: 10px;
 	/* background-color: red; */
 	transform: translateY(-50%);
+	color: var(--bs-primary);
 }
-.inpuxbox:focus{
+
+.inpuxbox:focus {
 	border: 1px solid var(--bs-primary);
 }

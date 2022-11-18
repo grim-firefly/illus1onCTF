@@ -8,7 +8,11 @@ import { FaPlus } from 'react-icons/fa';
 import { useEffect, useState } from 'react';
 import { Table } from 'antd';
 import { render } from '@testing-library/react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchCategory } from './../../Services/Store/Features/categorySlice';
+
 const ShowAllCategory = () => {
+	const dispatch = useDispatch();
 
 	const column = [
 		{
@@ -35,25 +39,13 @@ const ShowAllCategory = () => {
 
 		}
 	]
-	const [data, setData] = useState([{
-		key: '1',
-		name: 'John Brown',
-	}, {
-		key: '2',
-		name: 'Jim Green',
 
-	}, {
-		key: '3',
-		name: 'Joe Black',
-
-	}, {
-		key: '4',
-		name: 'Disabled User',
-
-	}]);
+	const category = useSelector(state => state.category)
+	useEffect(() => {
+		dispatch(fetchCategory())
+	}, [])
 
 	const handleDelete = (record) => {
-		setData(data.filter((item) => item.key !== record.key))
 	}
 	const rowSelection = (record) => {
 		console.log(record.key);
@@ -73,7 +65,7 @@ const ShowAllCategory = () => {
 				<Table
 					rowSelection={rowSelection}
 					columns={column}
-					dataSource={data}
+					// dataSource={data}
 
 				/>
 			</div>

@@ -10,7 +10,6 @@
 	padding: 0.5rem 1rem;
 
 	text-decoration: none;
-	/* position: relative; */
 	color: var(--bs-secondary);
 
 }
@@ -21,7 +20,6 @@
 }
 
 .linktext {
-	/* position: absolute; */
 	left: 50px;
 }
 

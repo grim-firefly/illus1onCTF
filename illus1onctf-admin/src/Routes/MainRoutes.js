@@ -5,6 +5,7 @@ import Home from './../Pages/Home/Index';
 import Category from './../Pages/Category/Index';
 import ShowAllCategory from './../Pages/Category/ShowAll';
 import CreateCategory from './../Pages/Category/Create';
+import EditCategory from './../Pages/Category/Edit';
 
 const MainRoutes = () => {
 	return (
@@ -14,6 +15,7 @@ const MainRoutes = () => {
 				<Route path='categories' element={<Category />} >
 					<Route index element={<ShowAllCategory />} />
 					<Route path='create' element={<CreateCategory />} />
+					<Route path='edit' element={<EditCategory />} />
 				</Route>
 			</Route>
 		</Routes>

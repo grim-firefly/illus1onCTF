@@ -22,7 +22,7 @@ const EditCategory = () => {
 						<Checkbox label="is Active ?" />
 					</div>
 					<div className='py-2 d-flex flex-row-reverse'>
-						<OutlineButton title="Create" />
+						<OutlineButton title="Update" />
 					</div>
 				</div>
 

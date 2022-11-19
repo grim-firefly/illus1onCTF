@@ -4,6 +4,8 @@
 	position: sticky;
 	top: 50px;
 	left:0;
+	z-index: 100000000;
+	
 
 }
 
@@ -41,7 +43,10 @@
 	.sidebar {
 		position: fixed;
 		top: 50px;
-		left:0px;
+		left:-50px;
+	}
+	.sidebarController{
+		left: 0px;
 	}
 }
 

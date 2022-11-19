@@ -8,6 +8,7 @@ import { FaPlus } from 'react-icons/fa';
 import { useEffect, useState } from 'react';
 import { Table } from 'antd';
 import { PropagateLoader } from 'react-spinners';
+import Swal from 'sweetalert2';
 
 const ShowAllCategory = () => {
 	const column = [
@@ -75,17 +76,42 @@ const ShowAllCategory = () => {
 	// }, [page, pageSize, refresher])
 
 	const handleDelete = (record) => {
-		setIsLoading(true)
-		const deleteData = async () => {
+		Swal.fire({
+			title: 'Are you sure?',
+			text: "You won't be able to revert this!",
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#1B98F5',
+			cancelButtonColor: '#d33',
+			confirmButtonText: 'Yes, delete it!',
 
-			const response = await axios.delete(`/categories/${record.id}`)
-			return response.data;
-		}
-		deleteData().then(data => {
-			setCategories(categories.filter(category => category.id !== record.id))
-			// setIsLoading(false)
-			setRefresher(!refresher)
+
+		}).then((result) => {
+			if (result.isConfirmed) {
+				setIsLoading(true)
+
+				const deleteData = async () => {
+
+					const response = await axios.delete(`/categories/${record.id}`)
+					return response.data;
+				}
+				deleteData().then(data => {
+					setCategories(categories.filter(category => category.id !== record.id))
+					setIsLoading(false)
+					Swal.fire({
+						icon: 'success',
+						title: 'Deleted!',
+						text: 'Category has been deleted.',
+						showConfirmButton: false,
+						timer: 1000
+
+					})
+					setRefresher(!refresher)
+				})
+
+			}
 		})
+
 
 	}
 	useEffect(() => {

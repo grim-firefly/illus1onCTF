@@ -4,6 +4,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import Input from './../../Common/Input/Index';
 import Checkbox from './../../Common/Checkbox/Index';
 import { PropagateLoader } from 'react-spinners';
+import Swal from 'sweetalert2'
+
 import axios from 'axios';
 
 const CreateCategory = () => {
@@ -22,8 +24,19 @@ const CreateCategory = () => {
 			return response.data;
 		}
 		createCategory().then(data => {
+
 			if (data.status === 'success') {
-				navigate('/categories')
+				Swal.fire({
+					icon: 'success',
+					title: 'Category has been created',
+					timer: 1000,
+					padding: '3em',
+					timerProgressBar: true,
+					fontSize: '1rem',
+					showConfirmButton: false,
+				}).then(() => {
+					navigate('/categories')
+				})
 			}
 			setIsLoading(false)
 
@@ -33,7 +46,7 @@ const CreateCategory = () => {
 
 	}
 
-	
+
 	return (
 		<>
 			{

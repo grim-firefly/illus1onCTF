@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { PropagateLoader } from 'react-spinners';
 import axios from 'axios';
+import  Swal  from 'sweetalert2';
 
 const EditCategory = () => {
 	const { id } = useParams()
@@ -43,7 +44,18 @@ const EditCategory = () => {
 		setIsLoading(true)
 		updateData().then(data => {
 			if (data.status === 'success') {
-				navigate('/categories')
+				Swal.fire({
+					icon: 'success',
+					title: 'Category has been Updated',
+					timer: 1000,
+					padding: '3em',
+					timerProgressBar: true,
+					timerProgressBarColor: '#1B98F5',
+					fontSize: '1rem',
+					showConfirmButton: false,
+				}).then(() => {
+					navigate('/categories')
+				})
 			}
 
 		})

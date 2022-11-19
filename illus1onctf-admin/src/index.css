@@ -40,3 +40,13 @@ body {
 	padding-right: 0 !important;
 	padding-left: 0 !important;
 }
+
+.swal2-title {
+	font-size: 1.25rem !important;
+	font-family: 'Montserrat', sans-serif !important;
+}
+
+.swal2-content {
+	font-size: 1rem !important;
+	font-family: 'Montserrat', sans-serif !important;
+}

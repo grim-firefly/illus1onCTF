@@ -7,13 +7,10 @@ import { Link } from 'react-router-dom';
 import { FaPlus } from 'react-icons/fa';
 import { useEffect, useState } from 'react';
 import { Table } from 'antd';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchCategory } from './../../Services/Store/Features/categorySlice';
-import { fetchTotalCategory } from './../../Services/Store/Features/categorySlice';
 import { PropagateLoader } from 'react-spinners';
+import { set } from 'immer/dist/internal';
 
 const ShowAllCategory = () => {
-	const dispatch = useDispatch();
 	const column = [
 		{
 			title: 'Name',
@@ -40,7 +37,7 @@ const ShowAllCategory = () => {
 							<button className='btn btn-danger' onClick={() => {
 								handleDelete(record)
 							}} >Delete</button>
-							<Link className='btn btn-primary' to="edit" >Edit</Link>
+							<Link className='btn btn-primary' to={`edit/${record.id}`} replace={true} >Edit</Link>
 						</div>
 
 					</>
@@ -50,25 +47,61 @@ const ShowAllCategory = () => {
 		}
 	]
 
-	const category = useSelector(state => state.category)
+
 	const [page, setPage] = useState(1);
 	const [pageSize, setPageSize] = useState(10);
+	const [isLoading, setIsLoading] = useState(false);
+	const [isPaginationLoading, setIsPaginationLoading] = useState(false);
+	const [totalData, setTotalData] = useState(0);
+	const [categories, setCategories] = useState([]);
 	useEffect(() => {
-		dispatch(fetchTotalCategory())
+		setIsPaginationLoading(true)
+		const fetchTotalDataCount = async () => {
+			const response = await axios.get('/categories/total');
+			return response.data;
+		}
+		fetchTotalDataCount().then(data => {
+			setTotalData(data.total)
+			setIsPaginationLoading(false)
+		})
+
 	}, [])
 
 	useEffect(() => {
-		dispatch(fetchCategory({ page, pageSize }))
+		setIsLoading(true)
+		const fetchData = async () => {
+			const response = await axios.get('/categories', {
+				params: {
+					page,
+					pageSize
+				}
+			});
+			return response.data;
+		}
+
+		fetchData().then(data => {
+			setCategories(data.categories)
+			setIsLoading(false)
+		})
 	}, [page, pageSize])
 
 	const handleDelete = (record) => {
+		setIsLoading(true)
+		const deleteData = async () => {
+
+			const response = await axios.delete(`/categories/${record.id}`)
+			return response.data;
+		}
+		deleteData().then(data => {
+			setCategories(categories.filter(category => category.id !== record.id))
+			setIsLoading(false)
+		})
+
 	}
-	const rowSelection = (record) => {
-		console.log(record.key);
-	}
+
 	return (<>
 		{
-			category.isPaginationLoading && < PropagateLoader loading={category.isPaginationLoading} color={"#1B98F5"} cssOverride={{
+			isPaginationLoading && < PropagateLoader loading={isPaginationLoading} color={"#1B98F5"} cssOverride={{
 				display: "block",
 				position: "absolute",
 				left: "50%",
@@ -80,7 +113,7 @@ const ShowAllCategory = () => {
 			} size={25} />
 		}
 		{
-			!category.isPaginationLoading &&
+			!isPaginationLoading &&
 			< div >
 
 
@@ -92,19 +125,18 @@ const ShowAllCategory = () => {
 						<Input placeholder="Seach" icon={BsSearch} />
 					</div>
 				</div>
-				<div >
+				<div className='p-2'>
 					<Table
-						rowSelection={rowSelection}
 						columns={column}
 						loading={{
-							spinning: category.isLoading,
+							spinning: isLoading,
 							indicator: <PropagateLoader color={"#1B98F5"} />
 						}}
 
-						dataSource={category.data}
+						dataSource={categories}
 						rowKey={record => record.id}
 						pagination={{
-							total: category.totalData,
+							total: totalData,
 							onChange: (page) => {
 								setPage(page)
 							},

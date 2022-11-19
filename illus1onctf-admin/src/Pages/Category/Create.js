@@ -3,30 +3,41 @@ import OutlineButton from './../../Common/Button/Outline/Index';
 import { Link, useNavigate } from 'react-router-dom';
 import Input from './../../Common/Input/Index';
 import Checkbox from './../../Common/Checkbox/Index';
-import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { createCategory } from './../../Services/Store/Features/categorySlice';
 import { PropagateLoader } from 'react-spinners';
+import axios from 'axios';
 
 const CreateCategory = () => {
+	const [isLoading, setIsLoading] = useState(false);
 	const [name, setName] = useState('');
 	const [is_active, setIs_active] = useState(true);
-	const category = useSelector(state => state.category.create);
-	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const handleCreate = () => {
-		dispatch(createCategory({ name, is_active }))
+
+		setIsLoading(true)
+		const createCategory = async () => {
+			const response = await axios.post('/categories', {
+				name,
+				is_active
+			});
+			return response.data;
+		}
+		createCategory().then(data => {
+			if (data.status === 'success') {
+				navigate('/categories')
+			}
+			setIsLoading(false)
+
+		})
+
+
 
 	}
-	useEffect(() => {
-		if (category.status === 'success') {
-			navigate('/categories')
-		}
-	}, [category.status])
+
+	
 	return (
 		<>
 			{
-				category.isLoading && < PropagateLoader loading={category.isPaginationLoading} color={"#1B98F5"} cssOverride={{
+				isLoading && < PropagateLoader loading={isLoading} color={"#1B98F5"} cssOverride={{
 					display: "block",
 					position: "absolute",
 					left: "50%",
@@ -37,7 +48,7 @@ const CreateCategory = () => {
 				}
 				} size={25} />
 			}
-			{!category.isLoading &&
+			{!isLoading &&
 
 				<div>
 					<div className='row p-2'>

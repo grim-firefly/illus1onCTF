@@ -15,7 +15,7 @@ const MainRoutes = () => {
 				<Route path='categories' element={<Category />} >
 					<Route index element={<ShowAllCategory />} />
 					<Route path='create' element={<CreateCategory />} />
-					<Route path='edit' element={<EditCategory />} />
+					<Route path='edit/:id' element={<EditCategory />} />
 				</Route>
 			</Route>
 		</Routes>

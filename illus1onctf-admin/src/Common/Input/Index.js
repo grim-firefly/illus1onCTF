@@ -6,7 +6,7 @@ const Input = (props) => {
 	return (
 		<div className={`${s.inputbox_container}`}>
 			<i className={`${s.inputbox_icon}`}>{icon && <props.icon />}</i>
-			<input className={`${s.inpuxbox}`} type={props.type ?? 'text'} name={name} placeholder={placeholder ?? ''} {...rest} />
+			<input className={`${s.inpuxbox}`} type={props.type ?? 'text'} name={name}  placeholder={placeholder ?? ''} {...rest} />
 		</div>
 
 	);

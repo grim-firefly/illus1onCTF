@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { PropagateLoader } from 'react-spinners';
 import axios from 'axios';
-import  Swal  from 'sweetalert2';
+import Swal from 'sweetalert2';
 
 const EditCategory = () => {
 	const { id } = useParams()
@@ -15,10 +15,16 @@ const EditCategory = () => {
 	const [name, setName] = useState('');
 	const [isLoading, setIsLoading] = useState(false);
 	const [is_active, setIs_active] = useState(true);
+	const auth=useSelector(state=>state.auth)
+
 	useEffect(() => {
 		setIsLoading(true)
 		const fetchData = async () => {
-			const response = await axios.get(`/categories/${id}`);
+			const response = await axios.get(`/admin/categories/${id}`, {
+				headers: {
+					'Autorization': `Bearer ${auth.token}`,
+				}
+			});
 			return response.data;
 		}
 		fetchData().then(data => {
@@ -33,16 +39,21 @@ const EditCategory = () => {
 
 
 	const handleUpdate = () => {
+		setIsLoading(true)
 		const updateData = async () => {
-			const response = await axios.put(`/categories`, {
+			const response = await axios.put(`/admin/categories`, {
 				id,
 				name,
 				is_active
+			}, {
+				headers: {
+					'Autorization': `Bearer ${auth.token}`,
+				}
 			});
 			return response.data;
 		}
-		setIsLoading(true)
 		updateData().then(data => {
+			setIsLoading(false)
 			if (data.status === 'success') {
 				Swal.fire({
 					icon: 'success',
@@ -58,8 +69,11 @@ const EditCategory = () => {
 				})
 			}
 
+
+		}).catch(error => {
+			console.log(error)
+			setIsLoading(false)
 		})
-		setIsLoading(false)
 
 	}
 	return (
@@ -74,8 +88,7 @@ const EditCategory = () => {
 					transform: "translate(-50%, -50%)",
 					zIndex: "999999999",
 					borderColor: "red",
-				}
-				} size={25} />
+				}} />
 			}
 
 			{!isLoading && name && <div>

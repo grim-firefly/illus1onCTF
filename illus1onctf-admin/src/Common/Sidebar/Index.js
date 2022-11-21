@@ -13,7 +13,7 @@ const sidebaritems = [
 	{
 		icon: GoDashboard,
 		name: "Dashboard",
-		url: ""
+		url: "dashboard"
 	},
 	{
 		icon: BiCategory,
@@ -23,9 +23,9 @@ const sidebaritems = [
 	{
 		name: 'Users',
 		icon: TfiUser,
-		url: 'login'
+		url: 'dashboard'
 	},
-	
+
 ]
 const Sidebar = () => {
 	const [showMenu, setShowMenu] = useState(false);

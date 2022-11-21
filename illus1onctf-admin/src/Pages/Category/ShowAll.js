@@ -9,6 +9,7 @@ import { useEffect, useState } from 'react';
 import { Table } from 'antd';
 import { PropagateLoader } from 'react-spinners';
 import Swal from 'sweetalert2';
+import { useSelector } from 'react-redux';
 
 const ShowAllCategory = () => {
 	const column = [
@@ -55,25 +56,9 @@ const ShowAllCategory = () => {
 	const [categories, setCategories] = useState([]);
 	const [refresher, setRefresher] = useState(false);
 	const [search, setSearch] = useState('');
+	const auth=useSelector(state=>state.auth)
 
 
-
-	// useEffect(() => {
-	// 	setIsLoading(true)
-	// 	const fetchData = async () => {
-	// 		const response = await axios.get('/categories', {
-	// 			params: {
-	// 				page,
-	// 				pageSize
-	// 			}
-	// 		});
-	// 		return response.data;
-	// 	}
-	// 	fetchData().then(data => {
-	// 		setCategories(data.categories)
-	// 		setIsLoading(false)
-	// 	})
-	// }, [page, pageSize, refresher])
 
 	const handleDelete = (record) => {
 		Swal.fire({
@@ -92,7 +77,11 @@ const ShowAllCategory = () => {
 
 				const deleteData = async () => {
 
-					const response = await axios.delete(`/categories/${record.id}`)
+					const response = await axios.delete(`/admin/categories/${record.id}`, {
+						headers: {
+							'Autorization': `Bearer ${auth.token}`,
+						}
+					})
 					return response.data;
 				}
 				deleteData().then(data => {
@@ -118,11 +107,15 @@ const ShowAllCategory = () => {
 		setIsLoading(true)
 		setPage(1)
 		const fetchData = async () => {
-			const response = await axios.get('/categories', {
+			const response = await axios.get('/admin/categories', {
 				params: {
 					page,
 					pageSize,
 					search
+				}
+			}, {
+				headers: {
+					'Autorization': `Bearer ${auth.token}`,
 				}
 			});
 			return response.data;
@@ -130,6 +123,9 @@ const ShowAllCategory = () => {
 		fetchData().then(data => {
 			setCategories(data.categories)
 			setTotalData(data.total)
+			setIsLoading(false)
+		}).catch(error => {
+			console.log(error)
 			setIsLoading(false)
 		})
 

@@ -7,24 +7,31 @@ import { PropagateLoader } from 'react-spinners';
 import Swal from 'sweetalert2'
 
 import axios from 'axios';
+import { useSelector } from 'react-redux';
 
 const CreateCategory = () => {
 	const [isLoading, setIsLoading] = useState(false);
 	const [name, setName] = useState('');
 	const [is_active, setIs_active] = useState(true);
 	const navigate = useNavigate();
+	const auth = useSelector(state => state.auth)
 	const handleCreate = () => {
 
 		setIsLoading(true)
 		const createCategory = async () => {
-			const response = await axios.post('/categories', {
+			const response = await axios.post('/admin/categories', {
 				name,
 				is_active
+			}, {
+				headers: {
+					'Autorization': `Bearer ${auth.token}`,
+				}
 			});
 			return response.data;
 		}
 		createCategory().then(data => {
 
+			setIsLoading(false)
 			if (data.status === 'success') {
 				Swal.fire({
 					icon: 'success',
@@ -38,8 +45,15 @@ const CreateCategory = () => {
 					navigate('/categories')
 				})
 			}
-			setIsLoading(false)
 
+		}).catch(err => {
+			setIsLoading(false)
+			Swal.fire({
+				icon: 'error',
+				title: 'Oops...',
+				text: err.response.data.message,
+
+			})
 		})
 
 

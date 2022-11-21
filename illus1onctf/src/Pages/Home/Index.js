@@ -36,6 +36,7 @@ const Home = () => {
 
 		}
 		else {
+			
 			setIsLoading(false);
 		}
 	}, []);
@@ -48,7 +49,7 @@ const Home = () => {
 					top: '30%',
 					transform: 'translate(-50%, -30%)',
 					zIndex: '1000'
-				}} color="var(--bs-primary)" loading={isLoading} />
+				}} color="var(--bs-primary)" loading={isLoading} speedMultiplier={2} />
 			}
 			{!isLoading &&
 				<>

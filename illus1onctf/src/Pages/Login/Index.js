@@ -9,11 +9,12 @@ import s from './style.module.css';
 import formlogo from './../../Assets/Images/illus1onCTF.png';
 import { Link, useNavigate } from 'react-router-dom';
 import Input from './../../Common/Input/Index';
-import { useEffect } from 'react';
 import axios from 'axios';
 import { PropagateLoader } from 'react-spinners';
 import { useDispatch, useSelector } from 'react-redux';
 import { setAuth } from '../../Store/Features/authSlice';
+import { useEffect } from 'react';
+
 
 const Login = () => {
 	const [signup, setSignup] = useState(false);
@@ -26,10 +27,18 @@ const Login = () => {
 	const [error, setError] = useState('');
 	const [isError, setIsError] = useState(false);
 	const [isSuccess, setIsSuccess] = useState(false);
+
 	const dispatch = useDispatch();
 	const auth = useSelector(state => state.auth);
 	const navigate = useNavigate();
 
+
+	useEffect(() => {
+		setIsLoading(true);
+		setTimeout(() => {
+			setIsLoading(false);
+		}, 400);
+	}, []);
 	const changeLaout = () => {
 		setForgotPassword(false);
 		setSignup(!signup);
@@ -37,6 +46,7 @@ const Login = () => {
 	const changeForgotPassword = () => {
 		setForgotPassword(!forgotPassword);
 	}
+
 	const handleCredentials = () => {
 		if (signup) {
 			setIsLoading(true);
@@ -134,7 +144,7 @@ const Login = () => {
 					top: '30%',
 					transform: 'translate(-50%, -30%)',
 					zIndex: '1000'
-				}} color="var(--bs-primary)" loading={isLoading} />
+				}} color="var(--bs-primary)" loading={isLoading} speedMultiplier={2} />
 			}
 			{!isLoading && <div className='container'>
 				<div className='row mt-5'>

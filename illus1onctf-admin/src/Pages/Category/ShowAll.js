@@ -56,7 +56,7 @@ const ShowAllCategory = () => {
 	const [categories, setCategories] = useState([]);
 	const [refresher, setRefresher] = useState(false);
 	const [search, setSearch] = useState('');
-	const auth=useSelector(state=>state.auth)
+	const auth = useSelector(state => state.auth)
 
 
 
@@ -77,7 +77,7 @@ const ShowAllCategory = () => {
 
 				const deleteData = async () => {
 
-					const response = await axios.delete(`/admin/categories/${record.id}`, {
+					const response = await axios.delete(`admin/categories/${record.id}`, {
 						headers: {
 							'Autorization': `Bearer ${auth.token}`,
 						}
@@ -104,10 +104,12 @@ const ShowAllCategory = () => {
 
 	}
 	useEffect(() => {
+		console.log(auth.token);
 		setIsLoading(true)
 		setPage(1)
 		const fetchData = async () => {
-			const response = await axios.get('/admin/categories', {
+
+			const response = await axios.get('admin/categories', {
 				params: {
 					page,
 					pageSize,
@@ -120,6 +122,9 @@ const ShowAllCategory = () => {
 			});
 			return response.data;
 		}
+
+
+
 		fetchData().then(data => {
 			setCategories(data.categories)
 			setTotalData(data.total)

@@ -36,7 +36,7 @@ const Header = () => {
 		logoutUser().then((data) => {
 			dispatch(logout());
 			setIsLoading(false);
-			navigate('/');
+			navigate('/')
 
 		}).catch((err) => {
 			setIsLoading(false);
@@ -60,7 +60,7 @@ const Header = () => {
 				<div className='d-flex  align-items-center '>
 					{!auth.isAuthenticated && <div className='d-flex position-relative' >
 						<div className={` ${s.navbar_items}`} id="navbaritems">
-							<div><NavLink to="login" onClick={() => setShowLinks(false)} className={`${s.navLink}`}>Log In</NavLink></div>
+							<div><NavLink to="" onClick={() => setShowLinks(false)} className={`${s.navLink}`}>Log In</NavLink></div>
 						</div>
 
 					</div>

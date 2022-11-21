@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useNavigate } from 'react-router-dom';
 import Header from './../../Common/Header/Index';
 import Sidebar from './../../Common/Sidebar/Index';
 import { useDispatch, useSelector } from 'react-redux';
@@ -11,6 +11,7 @@ const Home = () => {
 	const auth = useSelector(state => state.auth);
 	const dispatch = useDispatch();
 	const [isLoading, setIsLoading] = useState(false);
+	const navigate = useNavigate();
 	useEffect(() => {
 		setIsLoading(true);
 		const token = localStorage.getItem('token');
@@ -27,12 +28,14 @@ const Home = () => {
 				if (data.status == "success") {
 					dispatch(setAuth({ user: data.user, token: token }));
 					setIsLoading(false);
-
+					navigate('/dashboard');
 				}
 			}).catch((err) => {
 				console.log(err);
 				localStorage.removeItem('token');
 				setIsLoading(false);
+				navigate('/');
+
 			});
 
 

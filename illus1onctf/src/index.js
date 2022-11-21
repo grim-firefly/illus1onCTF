@@ -6,10 +6,17 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
+import './Services/Axios/Axios';
+import { Provider } from 'react-redux';
+import { store } from './Store/Store';
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
   <BrowserRouter>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </BrowserRouter>
 );
 

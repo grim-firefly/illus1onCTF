@@ -9,6 +9,7 @@ import Login from './../Pages/Login/Index';
 import ChallengeList from './../Pages/Challenges/Components/ChallengeList/Index';
 import Contest from './../Pages/Contest/Index';
 import Leaderboard from './../Pages/Leaderboard/Index';
+import RequireUserAuth from './Components/RequireUserAuth';
 
 
 
@@ -17,7 +18,13 @@ const MainRoutes = () => {
 		<Routes>
 			<Route path='/' element={<Home />}>
 				<Route index element={<About />} />
-				<Route path='dashboard' element={<Dashboard />} />
+
+				<Route path='dashboard' element={
+					<RequireUserAuth>
+						<Dashboard />
+					</RequireUserAuth>
+				} />
+
 				<Route path='login' element={<Login />} />
 
 				<Route path='challenges' element={<Challenges />}>

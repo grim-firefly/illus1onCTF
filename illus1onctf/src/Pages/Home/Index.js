@@ -35,6 +35,9 @@ const Home = () => {
 
 
 		}
+		else {
+			setIsLoading(false);
+		}
 	}, []);
 	return (
 		<>

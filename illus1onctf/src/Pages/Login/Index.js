@@ -7,7 +7,7 @@ import { FcCdLogo, FcGoogle } from 'react-icons/fc';
 import { BsFacebook, BsGithub } from 'react-icons/bs';
 import s from './style.module.css';
 import formlogo from './../../Assets/Images/illus1onCTF.png';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Input from './../../Common/Input/Index';
 import { useEffect } from 'react';
 import axios from 'axios';
@@ -28,10 +28,7 @@ const Login = () => {
 	const [isSuccess, setIsSuccess] = useState(false);
 	const dispatch = useDispatch();
 	const auth = useSelector(state => state.auth);
-
-
-
-
+	const navigate = useNavigate();
 
 	const changeLaout = () => {
 		setForgotPassword(false);
@@ -99,6 +96,7 @@ const Login = () => {
 				if (email && password) {
 
 					const loginUser = async () => {
+
 						const response = await axios.post('/login', {
 							email: email,
 							password: password,
@@ -110,10 +108,9 @@ const Login = () => {
 						if (data.status == "success") {
 							const token = data.token;
 							const user = data.user;
-							localStorage.setItem('token', token);
-							console.log(data.user);
 							dispatch(setAuth({ token, user }));
 							setIsLoading(false);
+							navigate('/dashboard');
 
 						}
 					}).catch((err) => {

@@ -1,0 +1,84 @@
+.formContainer{
+	background-color: var(--bs-white);
+	padding: 0.5rem 1rem !important;
+	border-radius: 0.3rem;
+	box-shadow: 0px 0px 20px rgba(0,0,0,0.2);
+}
+.formHeader{
+	text-align: center;
+}
+.formHeaderLogo{
+	width: 200px;
+	margin-bottom: 10px;
+	
+}
+.fogotpassword{
+	text-decoration: none;
+	color: var(--bs-primary);
+}
+.fogotpassword:hover{
+	text-decoration: underline;
+}
+.separator{
+	text-align: center;
+	position: relative;
+	color: var(--bs-secondary);
+	
+}
+.separatortext{
+	border:1px solid var(--bs-gray-300);
+	border-radius: 0.25rem;
+	padding: 2px;
+}
+.separator::before{
+	content: "";
+	width: calc(50% - 14px);
+	height: 2px;
+	position: absolute;
+	right: 0;
+	top: 50%;
+	transform: translate(0,-50%);
+	background-color: var(--bs-gray-300);
+}
+.separator::after{
+	content: "";
+	width: calc(50% - 14px);
+	height: 2px;
+	position: absolute;
+	left: 0;
+	top: 50%;
+	transform: translate(0,-50%);
+	background-color: var(--bs-gray-300);
+}
+.othersLogin{
+	display: flex;
+	justify-content:center;
+	align-items: center;
+	column-gap: 10px;
+}
+.socialmedia{
+	font-size: 34px;
+	color: var(--bs-primary);
+}
+.socialmedia:hover{
+	color: var(--bs-primary);
+}
+.socialmedia:nth-child(3){
+	color: var(--bs-secondary);
+}
+.reference{
+	margin-top: 1rem;
+	display: flex;
+	justify-content: center;
+	color: var(--bs-secondary);
+}
+.formFooterLink{
+	background-color: transparent;
+	border: none;
+	
+	color: var(--bs-primary);
+}
+.formFooterLink:hover{
+	text-decoration: underline;
+	color: var(--bs-primary);
+}

@@ -1,0 +1,29 @@
+.sidebaritems {
+	width: 100%;
+	display: block;
+}
+
+.link {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	padding: 0.5rem 1rem;
+
+	text-decoration: none;
+	color: var(--bs-secondary);
+
+}
+
+.linkicon {
+	font-size: 1.25rem;
+
+}
+
+.linktext {
+	left: 50px;
+}
+
+.link:hover {
+	background-color: var(--bs-primary);
+	color: #FFFFFF !important;
+}

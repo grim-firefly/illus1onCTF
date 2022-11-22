@@ -1,0 +1,25 @@
+.inputbox_container {
+	position: relative;
+}
+
+.inpuxbox {
+	width: 100%;
+	outline: none;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	padding: 6px 0px;
+	padding-left: 36px;
+}
+
+.inputbox_icon {
+	position: absolute;
+	top: 50%;
+	left: 10px;
+	/* background-color: red; */
+	transform: translateY(-50%);
+	color: var(--bs-primary);
+}
+
+.inpuxbox:focus {
+	border: 1px solid var(--bs-primary);
+}

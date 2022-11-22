@@ -1,0 +1,31 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background-color: #f5f5f5 !important;
+}
+
+:root {
+
+	--bs-primary: #1B98F5 !important;
+	--bs-btn-bg: #1B98F5;
+	--bs-btn-border-color: #1B98F5;
+	--bs-btn-disabled-bg: #1B98F5;
+	--bs-btn-disabled-border-color: #1B98F5;
+	--bs-secondary: #222a42 !important;
+
+}
+
+.normalurl {
+	color: var(--bs-primary) !important;
+	text-decoration: none;
+}
+
+.normalurl:hover {
+	color: var(--bs-primary) !important;
+	text-decoration: underline;
+}
+

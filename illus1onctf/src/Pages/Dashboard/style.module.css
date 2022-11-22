@@ -1,0 +1,28 @@
+
+.sidecardBodyTitle {
+	font-size: 1rem;
+	font-weight: bold;
+	margin-top: 5px;
+}
+
+.sidecardBodyLink {
+	font-size: 1rem;
+	text-decoration: none;
+	color: var(--bs-primary);
+}
+
+.sidecardBodyLink:hover {
+	text-decoration: underline;
+	color: var(--bs-primary);
+}
+
+.sidecardBodyTimer {
+	font-size: 0.875rem;
+}
+
+
+
+.sidecardBodyfooter {
+	font-size: 0.7rem;
+
+}

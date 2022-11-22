@@ -1,0 +1,48 @@
+.card {
+	background-color: #fff;
+	border-radius: 0.25rem;
+	border: 1px solid var(--bs-gray-300);
+	color: var(--bs-secondary);
+	padding: .25rem 0.5rem;
+	cursor: pointer;
+	height: 118px;
+	box-shadow: 0px 0px 5px  rgba(0, 0, 0, 0.1);
+
+}
+.solved{
+	opacity: 0.3;
+}
+
+.cardHeader {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	/* background: #000; */
+
+	font-size: 0.875rem;
+}
+.cardHeaderIcon{
+	font-size: 1.25rem;
+}
+.solved .cardHeaderIcon{
+	color: var(--bs-success);
+}
+.cardBody{
+	font-size: 0.9rem;
+	padding: 0.25rem 0rem 0rem 0rem;
+	display: flex;
+	align-items: center;
+	height: 3rem;
+}
+.cardfooter{
+	display: flex;
+	justify-content: space-between;
+	align-items: center !important;
+	font-size: 0.875rem;
+	/* padding-bottom: 0.5rem; */
+	/* background: #000; */
+}
+.cardfootericon{
+	font-size: 1.25rem;
+	color: var(--bs-primary);
+}

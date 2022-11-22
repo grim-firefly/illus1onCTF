@@ -8,6 +8,10 @@ import CreateCategory from './../Pages/Category/Create';
 import EditCategory from './../Pages/Category/Edit';
 import RequireAdminAuth from './Components/RequireAdminAuth';
 import Dashboard from './../Pages/Dashboard/Index';
+import User from './../Pages/Users/Index';
+import ShowAllUser from '../Pages/Users/ShowAll';
+import EditUser from './../Pages/Users/Edit';
+import CreateUser from '../Pages/Users/Create';
 
 const MainRoutes = () => {
 	return (
@@ -22,6 +26,14 @@ const MainRoutes = () => {
 					<Route index element={<ShowAllCategory />} />
 					<Route path='create' element={<CreateCategory />} />
 					<Route path='edit/:id' element={<EditCategory />} />
+				</Route>
+				<Route path='users' element={
+					<RequireAdminAuth>
+						<User />
+					</RequireAdminAuth>} >
+					<Route index element={<ShowAllUser />} />
+					<Route path='create' element={<CreateUser />} />
+					<Route path='edit/:id' element={<EditUser />} />
 				</Route>
 
 

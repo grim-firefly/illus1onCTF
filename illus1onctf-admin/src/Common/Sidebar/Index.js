@@ -23,8 +23,9 @@ const sidebaritems = [
 	{
 		name: 'Users',
 		icon: TfiUser,
-		url: 'dashboard'
+		url: 'users'
 	},
+	
 
 ]
 const Sidebar = () => {

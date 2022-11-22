@@ -1,8 +1,8 @@
 import React from 'react';
 import axios from "axios";
-import OutlineButton from './../../Common/Button/Outline/Index';
+import OutlineButton from '../../Common/Button/Outline/Index';
 import { BsSearch } from 'react-icons/bs';
-import Input from './../../Common/Input/Index';
+import Input from '../../Common/Input/Index';
 import { Link } from 'react-router-dom';
 import { FaPlus } from 'react-icons/fa';
 import { useEffect, useState } from 'react';
@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
 import { useSelector } from 'react-redux';
 import { FiEdit, FiTrash } from 'react-icons/fi';
 
-const ShowAllCategory = () => {
+const ShowAllUser = () => {
 	const column = [
 		{
 			title: 'Name',
@@ -20,12 +20,16 @@ const ShowAllCategory = () => {
 			key: 'id',
 		},
 		{
-			title: 'is_active',
-			dataIndex: 'is_active',
+			title: 'Email',
+			dataIndex: 'email',
 			key: 'id',
-			render: (is_active) => (
+		}, {
+			title: 'Role',
+			dataIndex: 'role',
+			key: 'id',
+			render: (role) => (
 				<>
-					{is_active ? <span className='badge bg-success'>Active</span> : <span className='badge bg-danger'>Inactive</span>}
+					{role =='admin' ? <span className='badge bg-danger'>Admin</span> : <span className='badge bg-success'>User</span>}
 				</>
 			)
 		},
@@ -54,7 +58,7 @@ const ShowAllCategory = () => {
 	const [pageSize, setPageSize] = useState(10);
 	const [isLoading, setIsLoading] = useState(false);
 	const [totalData, setTotalData] = useState(0);
-	const [categories, setCategories] = useState([]);
+	const [users, setUsers] = useState([]);
 	const [refresher, setRefresher] = useState(false);
 	const [search, setSearch] = useState('');
 	const auth = useSelector(state => state.auth)
@@ -79,7 +83,7 @@ const ShowAllCategory = () => {
 
 				const deleteData = async () => {
 
-					const response = await axios.delete(`/admin/categories/${record.id}`, {
+					const response = await axios.delete(`/admin/users/${record.id}`, {
 						headers: {
 							'Autorization': `Bearer ${auth.token}`,
 						}
@@ -87,7 +91,7 @@ const ShowAllCategory = () => {
 					return response.data;
 				}
 				deleteData().then(data => {
-					setCategories(categories.filter(category => category.id !== record.id))
+					setUsers(users.filter(user => user.id !== record.id))
 					setIsLoading(false)
 					Swal.fire({
 						icon: 'success',
@@ -113,7 +117,7 @@ const ShowAllCategory = () => {
 		setPage(1)
 		const fetchData = async () => {
 
-			const response = await axios.get('categories', {
+			const response = await axios.get('/admin/users', {
 				params: {
 					page,
 					pageSize,
@@ -126,7 +130,7 @@ const ShowAllCategory = () => {
 
 
 		fetchData().then(data => {
-			setCategories(data.categories)
+			setUsers(data.users)
 			setTotalData(data.total)
 			setIsLoading(false)
 		}).catch(error => {
@@ -157,7 +161,7 @@ const ShowAllCategory = () => {
 			</div>
 			<div className='p-2'>
 				<Table
-				
+
 					columns={column}
 					rowSelection={true}
 					loading={{
@@ -165,7 +169,7 @@ const ShowAllCategory = () => {
 						indicator: <PropagateLoader color={"#1B98F5"} />
 					}}
 
-					dataSource={categories}
+					dataSource={users}
 					rowKey={record => record.id}
 					pagination={{
 						total: totalData,
@@ -187,4 +191,4 @@ const ShowAllCategory = () => {
 
 	);
 }
-export default ShowAllCategory;
+export default ShowAllUser;

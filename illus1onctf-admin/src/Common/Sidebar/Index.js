@@ -8,7 +8,7 @@ import { TfiUser } from 'react-icons/tfi';
 import { useEffect, useRef } from 'react';
 import SidebarItem from './Components/SidebarItems/Index';
 import useDropDownHook from './../../Hooks/useDropDownHook';
-
+import { FaUserTag } from 'react-icons/fa';
 const sidebaritems = [
 	{
 		icon: GoDashboard,
@@ -25,7 +25,12 @@ const sidebaritems = [
 		icon: TfiUser,
 		url: 'users'
 	},
-	
+	{
+		name: 'Roles',
+		icon: FaUserTag,
+		url: 'roles'
+	},
+
 
 ]
 const Sidebar = () => {

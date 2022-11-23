@@ -12,6 +12,10 @@ import User from './../Pages/Users/Index';
 import ShowAllUser from '../Pages/Users/ShowAll';
 import EditUser from './../Pages/Users/Edit';
 import CreateUser from '../Pages/Users/Create';
+import Role from '../Pages/Role/Index';
+import EditRole from './../Pages/Role/Edit';
+import CreateRole from './../Pages/Role/Create';
+import ShowAllRole from './../Pages/Role/ShowAll';
 
 const MainRoutes = () => {
 	return (
@@ -34,6 +38,14 @@ const MainRoutes = () => {
 					<Route index element={<ShowAllUser />} />
 					<Route path='create' element={<CreateUser />} />
 					<Route path='edit/:id' element={<EditUser />} />
+				</Route>
+				<Route path='roles' element={
+					<RequireAdminAuth>
+						<Role />
+					</RequireAdminAuth>} >
+					<Route index element={<ShowAllRole />} />
+					<Route path='create' element={<CreateRole />} />
+					<Route path='edit/:id' element={<EditRole />} />
 				</Route>
 
 

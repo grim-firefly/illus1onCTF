@@ -16,26 +16,26 @@ const CreateUser = () => {
 	const handleCreate = () => {
 
 		setIsLoading(true)
-		const createCategory = async () => {
+		const createUser = async () => {
 			const response = await axios.post('/admin/users', {
 				name,
 			});
 			return response.data;
 		}
-		createCategory().then(data => {
+		createUser().then(data => {
 
 			setIsLoading(false)
 			if (data.status === 'success') {
 				Swal.fire({
 					icon: 'success',
-					title: 'Category has been created',
+					title: 'User has been created',
 					timer: 1000,
 					padding: '3em',
 					iconColor: 'var(--bs-primary)',
 					timerProgressBar: true,
 					showConfirmButton: false,
 				}).then(() => {
-					navigate('/categories')
+					navigate('/users')
 				})
 			}
 
@@ -80,7 +80,7 @@ const CreateUser = () => {
 					<div className='row justify-content-center py-2'>
 						<div className='col-10 col-sm-9 col-md-7 col-lg-5 col-xl-4'>
 							<div>
-								<Input placeholder="Category Name" onChange={(e) => {
+								<Input placeholder="User Name" onChange={(e) => {
 									setName(e.target.value)
 								}} />
 							</div>

@@ -5,7 +5,7 @@ import { FcGoogle } from 'react-icons/fc';
 import { BsFacebook, BsGithub } from 'react-icons/bs';
 import s from './style.module.css';
 import formlogo from './../../Assets/Images/illus1onCTF.png';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import Input from './../../Common/Input/Index';
 import { PropagateLoader } from 'react-spinners';
 import axios from 'axios';
@@ -20,6 +20,7 @@ const Login = () => {
 	const [isError, setIsError] = useState(false);
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
+	const location = useLocation();
 	useEffect(() => {
 		setIsLoading(true);
 		setTimeout(() => {
@@ -55,7 +56,7 @@ const Login = () => {
 						if (user.role == "admin") {
 							dispatch(setAuth({ token, user }));
 							setIsLoading(false);
-							navigate('/dashboard');
+							navigate(location.state?.from || '/dashboard');
 						}
 						else {
 							setIsError(true);

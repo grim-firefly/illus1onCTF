@@ -7,7 +7,7 @@ import { FcCdLogo, FcGoogle } from 'react-icons/fc';
 import { BsFacebook, BsGithub } from 'react-icons/bs';
 import s from './style.module.css';
 import formlogo from './../../Assets/Images/illus1onCTF.png';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import Input from './../../Common/Input/Index';
 import axios from 'axios';
 import { PropagateLoader } from 'react-spinners';
@@ -31,6 +31,7 @@ const Login = () => {
 	const dispatch = useDispatch();
 	const auth = useSelector(state => state.auth);
 	const navigate = useNavigate();
+	const location = useLocation();
 
 
 	useEffect(() => {
@@ -133,7 +134,6 @@ const Login = () => {
 								}
 								logoutUser().then((data) => {
 									setIsLoading(false);
-									navigate('/login');
 
 								}).catch((err) => {
 									setIsLoading(false);
@@ -143,11 +143,12 @@ const Login = () => {
 							else {
 								dispatch(setAuth({ token, user }));
 								setIsLoading(false);
-								navigate('/dashboard');
+								navigate(location.state?.from || '/dashboard');
+
 							}
 
 						}
-						else{
+						else {
 							setIsLoading(false);
 						}
 					}).catch((err) => {

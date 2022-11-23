@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, Outlet, useNavigate } from 'react-router-dom';
+import { Link, Outlet, useNavigate, useLocation } from 'react-router-dom';
 import Header from './../../Common/Header/Index';
 import Sidebar from './../../Common/Sidebar/Index';
 import { useDispatch, useSelector } from 'react-redux';
@@ -11,6 +11,8 @@ const Home = () => {
 	const auth = useSelector(state => state.auth);
 	const dispatch = useDispatch();
 	const [isLoading, setIsLoading] = useState(false);
+
+	const location = useLocation();
 	const navigate = useNavigate();
 	useEffect(() => {
 		setIsLoading(true);
@@ -29,12 +31,11 @@ const Home = () => {
 					if (data.user.role == "admin") {
 						dispatch(setAuth({ user: data.user, token: token }));
 						setIsLoading(false);
-						navigate('/dashboard');
+						navigate(location?.pathname || 'dashboard');
 					}
 					else {
 						localStorage.removeItem('token');
 						setIsLoading(false);
-						navigate('/');
 					}
 				}
 			}).catch((err) => {

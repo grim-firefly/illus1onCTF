@@ -96,7 +96,7 @@ const ShowAllUser = () => {
 					Swal.fire({
 						icon: 'success',
 						title: 'Deleted!',
-						text: 'Category has been deleted.',
+						text: 'User has been deleted.',
 						iconColor: 'var(--bs-primary)',
 						showConfirmButton: false,
 						timer: 1000

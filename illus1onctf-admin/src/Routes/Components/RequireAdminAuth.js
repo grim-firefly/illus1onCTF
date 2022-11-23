@@ -12,7 +12,7 @@ const RequireAdminAuth = ({ children }) => {
 		return children;
 	}
 	else {
-		return <Navigate to='/' replace />;
+		return <Navigate to='/' state={{from:location}} replace />;
 	}
 
 

@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
 import { useSelector } from 'react-redux';
 import { FiEdit, FiTrash } from 'react-icons/fi';
 
-const ShowAllCategory = () => {
+const ShowAllRole = () => {
 	const column = [
 		{
 			title: 'Name',
@@ -54,7 +54,7 @@ const ShowAllCategory = () => {
 	const [pageSize, setPageSize] = useState(10);
 	const [isLoading, setIsLoading] = useState(false);
 	const [totalData, setTotalData] = useState(0);
-	const [categories, setCategories] = useState([]);
+	const [roles, setRoles] = useState([]);
 	const [refresher, setRefresher] = useState(false);
 	const [search, setSearch] = useState('');
 	const auth = useSelector(state => state.auth)
@@ -79,7 +79,7 @@ const ShowAllCategory = () => {
 
 				const deleteData = async () => {
 
-					const response = await axios.delete(`/admin/categories/${record.id}`, {
+					const response = await axios.delete(`/admin/roles/${record.id}`, {
 						headers: {
 							'Autorization': `Bearer ${auth.token}`,
 						}
@@ -87,12 +87,12 @@ const ShowAllCategory = () => {
 					return response.data;
 				}
 				deleteData().then(data => {
-					setCategories(categories.filter(category => category.id !== record.id))
+					setRoles(roles.filter(role => role.id !== record.id))
 					setIsLoading(false)
 					Swal.fire({
 						icon: 'success',
 						title: 'Deleted!',
-						text: 'Category has been deleted.',
+						text: 'Role has been deleted.',
 						iconColor: 'var(--bs-primary)',
 						showConfirmButton: false,
 						timer: 1000
@@ -113,7 +113,7 @@ const ShowAllCategory = () => {
 		setPage(1)
 		const fetchData = async () => {
 
-			const response = await axios.get('categories', {
+			const response = await axios.get('/admin/roles', {
 				params: {
 					page,
 					pageSize,
@@ -126,7 +126,7 @@ const ShowAllCategory = () => {
 
 
 		fetchData().then(data => {
-			setCategories(data.categories)
+			setRoles(data.roles)
 			setTotalData(data.total)
 			setIsLoading(false)
 		}).catch(error => {
@@ -157,7 +157,7 @@ const ShowAllCategory = () => {
 			</div>
 			<div className='p-2'>
 				<Table
-				
+
 					columns={column}
 					rowSelection={true}
 					loading={{
@@ -165,7 +165,7 @@ const ShowAllCategory = () => {
 						indicator: <PropagateLoader color={"#1B98F5"} />
 					}}
 
-					dataSource={categories}
+					dataSource={roles}
 					rowKey={record => record.id}
 					pagination={{
 						total: totalData,
@@ -187,4 +187,4 @@ const ShowAllCategory = () => {
 
 	);
 }
-export default ShowAllCategory;
+export default ShowAllRole;

@@ -15,7 +15,7 @@ const EditCategory = () => {
 	const [name, setName] = useState('');
 	const [isLoading, setIsLoading] = useState(false);
 	const [is_active, setIs_active] = useState(true);
-	const auth=useSelector(state=>state.auth)
+	const auth = useSelector(state => state.auth)
 
 	useEffect(() => {
 		setIsLoading(true)
@@ -27,6 +27,13 @@ const EditCategory = () => {
 			data.category && setName(data.category.name);
 			data.category && setIs_active(data.category.is_active);
 			setIsLoading(false)
+		}).catch(err => {
+			setIsLoading(false)
+			Swal.fire({
+				icon: 'error',
+				title: 'Oops...',
+				text: err.response.data.message,
+			})
 		})
 
 	}, [id])

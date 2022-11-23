@@ -20,8 +20,8 @@ Route::group(['middleware' => ['auth:api', 'role:admin']], function () {
 	Route::delete('users/{user}', [UserController::class, 'delete']);
 
 	Route::get('roles', [RoleController::class, 'index']);
-	Route::put('roles', [RoleController::class, 'updateUser']);
+	Route::put('roles', [RoleController::class, 'updateRole']);
 	Route::post('roles', [RoleController::class, 'create']);
-	Route::get('roles/{role}', [RoleController::class, 'getUser']);
+	Route::get('roles/{role}', [RoleController::class, 'getRole']);
 	Route::delete('roles/{role}', [RoleController::class, 'delete']);
 });

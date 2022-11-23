@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, Outlet, Route, Routes } from 'react-router-dom';
+import { Link, Outlet, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import Header from './../../Common/Header/Index';
@@ -10,6 +10,8 @@ const Home = () => {
 	const auth = useSelector(state => state.auth);
 	const dispatch = useDispatch();
 	const [isLoading, setIsLoading] = useState(false);
+	const location = useLocation();
+	const navigate = useNavigate();
 	useEffect(() => {
 		setIsLoading(true);
 		const token = localStorage.getItem('token');
@@ -26,17 +28,19 @@ const Home = () => {
 				if (data.status == "success") {
 					dispatch(setAuth({ user: data.user, token: token }));
 					setIsLoading(false);
+					navigate(location?.pathname || '/dashboard');
 
 				}
 			}).catch((err) => {
 				localStorage.removeItem('token');
 				setIsLoading(false);
+				navigate('/login');
 			});
 
 
 		}
 		else {
-			
+
 			setIsLoading(false);
 		}
 	}, []);

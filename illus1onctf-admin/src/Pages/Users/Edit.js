@@ -57,7 +57,7 @@ const EditUser = () => {
 			if (data.status === 'success') {
 				Swal.fire({
 					icon: 'success',
-					title: 'Category has been Updated',
+					title: 'User has been Updated',
 					timer: 1000,
 					padding: '3em',
 					iconColor: 'var(--bs-primary)',
@@ -102,7 +102,7 @@ const EditUser = () => {
 				<div className='row justify-content-center py-2'>
 					<div className='col-10 col-sm-9 col-md-7 col-lg-5 col-xl-4'>
 						<div>
-							<Input placeholder="Category Name" defaultValue={name} onChange={(e) => {
+							<Input placeholder="User Name" defaultValue={name} onChange={(e) => {
 								setName(e.target.value)
 							}} />
 						</div>
@@ -112,7 +112,7 @@ const EditUser = () => {
 							}} />
 						</div>
 						<div>
-							{/* <Input placeholder="Category Name" defaultValue={name} onChange={(e) => {
+							{/* <Input placeholder="User Name" defaultValue={name} onChange={(e) => {
 								setName(e.target.value)
 							}} /> */}
 							<SelectBox options={[{ value: 'admin', label: 'Admin' }, { value: 'user', label: 'User' }]} value={role} />

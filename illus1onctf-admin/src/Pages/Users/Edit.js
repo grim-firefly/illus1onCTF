@@ -16,6 +16,7 @@ const EditUser = () => {
 	const [name, setName] = useState('');
 	const [email, setEmail] = useState('');
 	const [role, setRole] = useState('');
+	const [roleList, setRoleList] = useState([]);
 	const [isLoading, setIsLoading] = useState(false);
 	const auth = useSelector(state => state.auth)
 
@@ -34,6 +35,20 @@ const EditUser = () => {
 			console.log(err);
 			setIsLoading(false)
 		})
+
+		const fetchRoleList = async () => {
+			const response = await axios.get(`/admin/activeroles`);
+			return response.data;
+		}
+		fetchRoleList().then(data => {
+			// data.user && setName(data.user.name);
+			data.roles && setRoleList(data.roles.map(role => ({ value: role.name, label: role.name })));
+			setIsLoading(false)
+		}).catch(err => {
+			console.log(err);
+			setIsLoading(false)
+		})
+
 
 	}, [id])
 
@@ -70,7 +85,11 @@ const EditUser = () => {
 
 
 		}).catch(error => {
-			console.log(error)
+			Swal.fire({
+				icon: 'error',
+				title: 'Oops...',
+				text: error.response.data.message,
+			})
 			setIsLoading(false)
 		})
 
@@ -115,7 +134,7 @@ const EditUser = () => {
 							{/* <Input placeholder="User Name" defaultValue={name} onChange={(e) => {
 								setName(e.target.value)
 							}} /> */}
-							<SelectBox options={[{ value: 'admin', label: 'Admin' }, { value: 'user', label: 'User' }]} value={role} />
+							<SelectBox options={roleList} value={role} onChange={(e) => setRole(e.target.value)} />
 						</div>
 
 						<div className='py-2 d-flex flex-row-reverse'>

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -41,24 +43,38 @@ class UserController extends Controller
 
     public function create(Request $request)
     {
-        $request->validate([
-            'name' => 'required|string|max:55',
-            'is_active' => 'required|boolean',
+
+        $validator = Validator::make($request->all(), [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:1'],
+            'role' => ['required', 'string', 'max:255', 'exists:roles,name'],
         ]);
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 'error',
+                'message' => $validator->errors()->first(),
+            ], 400);
+        }
+        $data = $request->all();
+        $data['password'] = Hash::make($request->password);
+        // return $request->all();
         $user = User::create([
-            'name' => $request->input('name'),
-            'is_active' => $request->input('is_active'),
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => $data['password'],
+            'role' => $data['role'],
         ]);
         if ($user) {
             return response()->json([
+                'status' => 'success',
                 'message' => 'User created successfully',
-                'status' => 'success'
-            ], 201);
+            ], 200);
         }
         return response()->json([
-            'message' => 'User creation failed',
-            'status' => 'failed'
-        ], 500);
+            'status' => 'error',
+            'message' => 'Something went wrong',
+        ], 400);
     }
     public function getUser(User $user)
     {
@@ -68,16 +84,19 @@ class UserController extends Controller
         ], 200);
     }
 
-    public function updateCategory(Request $request)
+    public function updateUser(Request $request)
     {
         $request->validate([
             'id' => 'required|integer|exists:users,id',
             'name' => 'required|string|max:55',
-            'is_active' => 'required|boolean',
+            'email' => 'required|string|email|max:55|unique:users,email,' . $request->input('id'),
+            'role' => 'required|exists:roles,name',
+
         ]);
         $user = User::find($request->input('id'));
         $user->name = $request->input('name');
-        $user->is_active = $request->input('is_active');
+        $user->email = $request->input('email');
+        $user->role = $request->input('role');
         if ($user->save()) {
             return response()->json([
                 'message' => 'User updated successfully',

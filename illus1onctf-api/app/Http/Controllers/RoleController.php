@@ -66,6 +66,13 @@ class RoleController extends Controller
             'role' => $role
         ], 200);
     }
+    public function getActiveRoles()
+    {
+        $roleList = Role::where('is_active', 1)->get(['id', 'name']);
+        return response()->json([
+            'roles' => $roleList
+        ], 200);
+    }
 
     public function updateRole(Request $request)
     {

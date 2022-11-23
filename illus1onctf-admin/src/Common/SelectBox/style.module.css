@@ -1,0 +1,12 @@
+.selectbox {
+	padding: 6px 0px !important;
+	padding-left: 36px !important;
+
+}
+
+
+
+.selectbox:focus {
+	border: 1px solid var(--bs-primary) !important;
+	outline: none !important;
+}

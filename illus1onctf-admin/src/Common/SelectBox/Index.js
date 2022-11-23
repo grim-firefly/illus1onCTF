@@ -1,14 +1,13 @@
 import React from 'react';
-
+import s from './style.module.css';
 const SelectBox = (props) => {
-	const { options, value, onChange, label, name, error } = props;
+	const { options, ...rest } = props;
 	return (
 		<div>
-			<select class="form-select" aria-label="Default select example">
-				<option selected>Select Role</option>
+			<select className={`form-select ${s.selectbox}`} {...rest}>
 				{
 					options.map((item, index) => {
-						return <option value={item.value}>{item.label}</option>
+						return <option className={`${s.options}`} key={index} value={item.value} >{item.label}</option>
 					})
 				}
 			</select>

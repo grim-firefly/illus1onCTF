@@ -4,21 +4,21 @@ import { FiUser, FiUserCheck } from 'react-icons/fi';
 import { AiOutlineLike } from 'react-icons/ai';
 import { useEffect, useState } from 'react';
 const ChallengeCard = (props) => {
-	const {data,...cardprops}=props;
+	const { data, ...cardprops } = props;
 	return (
 		<div className={`${s.card} ${data.solved ? s.solved : ''}`}  {...cardprops} >
 			<div className={`${s.cardHeader}`}>
-				<div>{data.category}</div>
-				<div ><i className={`${s.cardHeaderIcon}`}>{data.solved ? <FiUserCheck /> : < FiUser />} </i> | {data.point} points</div>
+				<div><b>{data.title.slice(0, Math.min(data.title.length, 20))}{data.title.length > 20 ? '...' : ''}</b></div>
+				<div ><i className={`${s.cardHeaderIcon}`}>{data.solved ? <FiUserCheck /> : < FiUser />} </i> | {data.points} points</div>
 
 			</div>
 			<div className={`${s.cardBody}`}>
-				{data.title}
+				{data.description.slice(0, Math.min(data.description.length, 50))}{data.description.length > 50 ? '...' : ''}
 			</div>
 
 			<div className={` ${s.cardfooter}`}>
-				<div>Solves {data.solve}</div>
-				<div>{data.like} <i className={`${s.cardfootericon}`}><AiOutlineLike /></i> </div>
+				<div>Solves {data.solves}</div>
+				<div>{data.solves} <i className={`${s.cardfootericon}`}><AiOutlineLike /></i> </div>
 			</div>
 
 		</div >

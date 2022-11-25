@@ -8,6 +8,7 @@ import ChallengeList from './Components/ChallengeList/Index';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { PropagateLoader } from 'react-spinners';
+import { Pagination } from 'antd';
 
 
 const Challenges = () => {
@@ -17,18 +18,23 @@ const Challenges = () => {
 	}
 	const [challenges, setChallenges] = useState([]);
 	const [total, setTotal] = useState(1);
-	const [pageSize, setPageSize] = useState(10);
+	const [pageSize, setPageSize] = useState(18);
 	const [page, setPage] = useState(1);
 	const [isLoading, setIsLoading] = useState(false);
+	const [search, setSearch] = useState('');
+	const [maxPoints, setMaxPoints] = useState(1000);
+	const [minPoints, setMinPoints] = useState(0);
 
 	useEffect(() => {
 		setIsLoading(true);
 		const fetchChallenge = async () => {
 			const response = await axios.get('http://127.0.0.1:8000/api/challenges', {
 				params: {
-					page: page,
-					pageSize: pageSize,
-
+					page,
+					pageSize,
+					search,
+					maxPoints,
+					minPoints
 				}
 
 			});
@@ -44,12 +50,28 @@ const Challenges = () => {
 			setIsLoading(false);
 		});
 
-	}, [page, pageSize, total]);
-	
-	const handlePage = (page) => {
-		setPage(page);
-	}
+	}, [page, pageSize, search, maxPoints, minPoints]);
 
+
+	const handleSearch = (e) => {
+		setTimeout(() => {
+			setSearch(e.target.value);
+			setPage(1);
+		}, 500)
+	}
+	const handleMaxPonts = (e) => {
+
+		setTimeout(() => {
+			setMaxPoints(e.target.value);
+		}, 500)
+	}
+	const handleMinPoints = (e) => {
+
+		setTimeout(() => {
+			setMinPoints(e.target.value);
+		}, 500)
+
+	}
 	return (
 		<>
 			{
@@ -63,28 +85,41 @@ const Challenges = () => {
 					borderColor: "red",
 				}} />
 			}
-			{!isLoading && <div className='container'>
+			<div className='container'>
 				<Modal challenge={viewChallenge} />
 				<div className="row">
 					<div className="col-md-5 col-lg-4 col-xl-3  mt-2">
 
 						<div className="">
-							<Filters />
+							<Filters search={handleSearch} maxPoints={handleMaxPonts} minPoints={handleMinPoints} />
 						</div>
 
 					</div>
-					<div className="col-md-7 col-lg-8 col-xl-9 mt-2">
+					{!isLoading &&
+						<div className="col-md-7 col-lg-8 col-xl-9 mt-2">
 
-						<ChallengeList challenges={challenges} handleViewChallenge={handleViewChallenge} />
-						<div className='row'>
-							<div className='col-12 mt-1'>
-								<Paginator handlePage={handlePage} total={Math.ceil((total / pageSize))} />
+							<ChallengeList challenges={challenges} handleViewChallenge={handleViewChallenge} />
+							<div className=' paginationcontainer mt-1'>
+								<Pagination
+									showSizeChanger
+									responsive
+									defaultPageSize={pageSize}
+									onShowSizeChange={(current, pageSize) => {
+										setPageSize(pageSize)
+									}}
+									defaultCurrent={page}
+									pageSizeOptions={[18, 36, 72, 120]}
+									onChange={(page) => setPage(page)}
+									total={total}
+
+								/>
+
+
 							</div>
-
 						</div>
-					</div>
+					}
 				</div>
-			</div >}
+			</div >
 		</>
 
 	);

@@ -62,20 +62,22 @@ const Modal = ({ challenge }) => {
 								<h5 className="modal-title" id="exampleModalLabel">{data.title}</h5>
 								<button onClick={handleBookMark} className={`${s.bookmarkbtn} ${data.saved ? s.bookmarkremovebtn : ''}`}>{data.saved ? <BsBookmarkX /> : <BsBookmarkHeart />} </button>
 							</div>
-							<div className='d-flex align-items-center gap-2'>
-								<div>
-									<i className={`${s.cardSolvedIcon}  ${data.solved ? 'text-success' : ''}`}>{data.solved ? <FiUserCheck /> : < FiUser />} </i> | {data.points} points
+
+								<div className={`  ${s.pontssolveContainer} `}>
+									<div>
+										<i className={`${s.cardSolvedIcon}  ${data.solved ? 'text-success' : ''}`}>{data.solved ? <FiUserCheck /> : < FiUser />} </i> | {data.points} points
+									</div>
+									<div>
+										<button type="button" className={`${s.closebtn}`} data-bs-dismiss="modal" aria-label="Close"><ImCancelCircle /></button>
+									</div>
 								</div>
-								<div>
-									<button type="button" className={`${s.closebtn}`} data-bs-dismiss="modal" aria-label="Close"><ImCancelCircle /></button>
-								</div>
-							</div>
+
 
 
 						</div>
 						<div className={`${s.headerbottom}`}>
 							<div className={`${s.author}`}>
-								<span className={`${s.authortitle}`}>AUTHOR :</span> {data.author?? "Admin"}
+								<span className={`${s.authortitle}`}>AUTHOR :</span> {data.author ?? "Admin"}
 							</div>
 							<div className='d-flex gap-1'>
 

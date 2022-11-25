@@ -5,6 +5,14 @@
 .headerTop {
 	padding-bottom: 0px !important;
 	border-bottom: none !important;
+	align-items: flex-start;
+}
+.pontssolveContainer{
+	height: 100% !important;
+	min-width: 140px !important;
+	display: flex;
+	gap: 0.25rem;
+	margin-top: 0;
 }
 
 .headerbottom {
@@ -30,6 +38,8 @@
 	border-radius: 0.25rem;
 	padding: 0.125rem 0.25rem;
 	transition: all 100ms linear;
+	height: 2rem;
+	margin-right: 0.25rem;
 
 }
 

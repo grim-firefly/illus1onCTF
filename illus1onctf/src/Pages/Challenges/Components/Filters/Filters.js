@@ -17,11 +17,12 @@ const lists = [
 
 
 
-const Filters = () => {
+const Filters = ({ search,minPoints,maxPoints }) => {
 	const [activeCategory, setActiveCategory] = useState(0);
 	const handleli = (index) => {
 		setActiveCategory(index)
 	}
+
 	return (
 		<div className={`${s.filters}`}>
 			<div className={`${s.filtersHeading}`}>Filters</div>
@@ -30,7 +31,7 @@ const Filters = () => {
 				<Checkbox label="Show Bookmarked Solved" id="showbookmarked" />
 			</div>
 			<div className={`${s.filterbody}`}>
-				<Input type="text" placeholder="Search By Name" name="searchchallenges" icon={BsSearch} />
+				<Input type="text" placeholder="Search By Name" icon={BsSearch} onChange={(e) => search(e)} />
 			</div>
 			<div className={`${s.filterbody}`}>
 				<div className={`${s.filterbodyheading}`}>Create a Challenge</div>
@@ -56,9 +57,9 @@ const Filters = () => {
 			<div className={`${s.filterbody}`}>
 				<div className={`${s.filterbodyheading}`}>Filter By Point</div>
 				<div className={`${s.minmax} d-flex flex-row`}>
-					<Input type="text" placeholder="Min" name="minpoint" />
+					<Input type="text" placeholder="Min" name="minpoint" onChange={(e)=>minPoints(e)} />
 					<div className='px-3'>To</div>
-					<Input type="text" placeholder="Max" name="maxpont" />
+					<Input type="text" placeholder="Max" name="maxpont" onChange={(e)=>maxPoints(e)}  />
 
 				</div>
 			</div>

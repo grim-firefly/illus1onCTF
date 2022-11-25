@@ -30,6 +30,7 @@ const Paginator = ({ total, handlePage }) => {
 		setPageStart(start);
 		setPageActive(active);
 		setPageEnd(end);
+
 	}
 	const handleNextPage = () => {
 		if (pageStart + pageActive + 1 < page.length) {

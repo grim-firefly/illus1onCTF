@@ -28,7 +28,7 @@ const MainRoutes = () => {
 				<Route path='login' element={<Login />} />
 
 				<Route path='challenges' element={<Challenges />}>
-					<Route path=':category' element={<Challenges />} />
+					{/* <Route path=':category' element={<Challenges />} /> */}
 				</Route>
 				<Route path='contest' element={<Contest />} >
 				</Route>

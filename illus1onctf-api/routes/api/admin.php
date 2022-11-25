@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ChallengeController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -25,4 +26,5 @@ Route::group(['middleware' => ['auth:api', 'role:admin']], function () {
 	Route::post('roles', [RoleController::class, 'create']);
 	Route::get('roles/{role}', [RoleController::class, 'getRole']);
 	Route::delete('roles/{role}', [RoleController::class, 'delete']);
+	Route::resource('challenges', ChallengeController::class);
 });

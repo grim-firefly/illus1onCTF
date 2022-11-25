@@ -1,12 +1,24 @@
 import React, { useState } from 'react';
 import s from './style.module.css';
+import { useEffect } from 'react';
 
 
-const page = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-const Paginator = () => {
+
+const Paginator = ({ total, handlePage }) => {
 	const [pageActive, setPageActive] = useState(0);
 	const [pageStart, setPageStart] = useState(0);
 	const [pageEnd, setPageEnd] = useState(7);
+	const [page, setPage] = useState([]);
+	useEffect(() => {
+		page.length = total;
+		setPage(Array.from({ length: total }, (_, idx) => idx + 1));
+		setPageEnd(total > 7 ? 7 : total);
+
+	}, [total]);
+
+	useEffect(() => {
+		handlePage(pageActive);
+	}, [pageActive]);
 	const handleActivePage = (idx) => {
 		const index = pageStart + idx;
 		const start = Math.max(0, Math.min(index - 3, page.length - 7));
@@ -53,7 +65,7 @@ const Paginator = () => {
 				</li>
 				{
 					page.slice(pageStart, pageEnd).map((item, index) => {
-						return (<li key={index} ><button onClick={() => handleActivePage(index)} className={`${s.pageitem}  ${pageActive == index ? s.active : ''} `} title="Page 1" >{item}</button></li>);
+						return (<li key={index} ><button onClick={() => handleActivePage(index)} className={`${s.pageitem}  ${pageActive == index ? s.active : ''} `} >{item}</button></li>);
 					})
 				}
 				<li >

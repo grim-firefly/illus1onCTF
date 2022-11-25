@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ChallengeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,7 +23,8 @@ Route::post('login', [AuthController::class, 'login']);
 Route::get('/user', [AuthController::class, 'user'])->middleware('auth:api');
 Route::get('logout', [AuthController::class, 'logout'])->middleware('auth:api');
 Route::get('categories', [CategoryController::class, 'index']);
-
+Route::get('challenges', [ChallengeController::class, 'index']);
+Route::get('challenges/{challenge}', [ChallengeController::class, 'show']);
 
 
 

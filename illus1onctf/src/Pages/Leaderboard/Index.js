@@ -23,7 +23,6 @@ const Leaderboard = () => {
 							{/* <ChallengeList handleViewChallenge={handleViewChallenge} /> */}
 							<div className='row'>
 								<div className='col-12 mt-1'>
-									<Paginator />
 								</div>
 
 							</div>

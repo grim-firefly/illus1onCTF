@@ -33,7 +33,7 @@ const MainRoutes = () => {
 				<Route path='contest' element={<Contest />} >
 				</Route>
 
-				<Route path='contest/:id' element={<h1>I am Contest</h1>} />
+				
 				<Route path='leaderboard' element={<Leaderboard />}>
 				</Route>
 

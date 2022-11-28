@@ -11,11 +11,14 @@ import { Link } from 'react-router-dom';
 import Input from './../../../../Common/Input/Index';
 import axios from 'axios';
 import { PropagateLoader } from 'react-spinners';
+import DOMPurify from 'dompurify';
+import { useSelector } from 'react-redux';
 
 const Modal = ({ challenge }) => {
 
 	const [data, setData] = useState({});
 	const [isLoading, setIsLoading] = useState(false);
+	const auth = useSelector(state => state.auth);
 
 	useEffect(() => {
 		if (challenge) {
@@ -59,17 +62,18 @@ const Modal = ({ challenge }) => {
 						<div className={`modal-header ${s.headerTop} `}>
 							<div className='d-flex gap-2'>
 								<h5 className="modal-title" id="exampleModalLabel">{data.title}</h5>
-								<button onClick={handleBookMark} className={`${s.bookmarkbtn} ${data.saved ? s.bookmarkremovebtn : ''}`}>{data.saved ? <BsBookmarkX /> : <BsBookmarkHeart />} </button>
+
+								<button onClick={handleBookMark} disabled={!auth.isAuthenticated} style={!auth.isAuthenticated ? { color: 'var(--bs-gray-300)', border: '1px solid var(--bs-gray-300)' } : {}} className={`${s.bookmarkbtn} ${data.saved ? s.bookmarkremovebtn : ''}`}>{data.saved ? <BsBookmarkX /> : <BsBookmarkHeart />} </button>
 							</div>
 
-								<div className={`  ${s.pontssolveContainer} `}>
-									<div>
-										<i className={`${s.cardSolvedIcon}  ${data.solved ? 'text-success' : ''}`}>{data.solved ? <FiUserCheck /> : < FiUser />} </i> | {data.points} points
-									</div>
-									<div>
-										<button type="button" className={`${s.closebtn}`} data-bs-dismiss="modal" aria-label="Close"><ImCancelCircle /></button>
-									</div>
+							<div className={`  ${s.pontssolveContainer} `}>
+								<div>
+									<i className={`${s.cardSolvedIcon}  ${data.solved ? 'text-success' : ''}`}>{data.solved ? <FiUserCheck /> : < FiUser />} </i> | {data.points} points
 								</div>
+								<div>
+									<button type="button" className={`${s.closebtn}`} data-bs-dismiss="modal" aria-label="Close"><ImCancelCircle /></button>
+								</div>
+							</div>
 
 
 
@@ -92,8 +96,8 @@ const Modal = ({ challenge }) => {
 						</div>
 
 
-						<div className="modal-body">
-							{data.description}
+						<div className="modal-body" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(data.description) }}>
+
 						</div>
 						<div className={`${s.likestatus} row`}>
 							<div className='col-sm-8 col-12'>
@@ -107,10 +111,10 @@ const Modal = ({ challenge }) => {
 						</div>
 						<div className="modal-footer d-flex ">
 							<div className='flex-grow-1'>
-								<Input icon={BsFlag} placeholder="illus1onCTF{FLAG}" />
+								<Input icon={BsFlag} disabled={!auth.isAuthenticated} placeholder="illus1onCTF{FLAG}" />
 
 							</div>
-							<button type="button" className="btn btn-primary">Submit Flag</button>
+							<button disabled={!auth.isAuthenticated} type="button" className="btn btn-primary">Submit Flag</button>
 						</div>
 					</div>
 					}

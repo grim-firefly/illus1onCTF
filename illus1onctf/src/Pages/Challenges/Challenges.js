@@ -9,6 +9,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { PropagateLoader } from 'react-spinners';
 import { Pagination } from 'antd';
+import { useSelector } from 'react-redux';
 
 
 const Challenges = () => {
@@ -24,7 +25,6 @@ const Challenges = () => {
 	const [search, setSearch] = useState('');
 	const [maxPoints, setMaxPoints] = useState(1000);
 	const [minPoints, setMinPoints] = useState(0);
-
 	useEffect(() => {
 		setIsLoading(true);
 		const fetchChallenge = async () => {

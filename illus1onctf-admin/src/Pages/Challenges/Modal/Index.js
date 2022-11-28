@@ -11,6 +11,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { PropagateLoader } from 'react-spinners';
 import Input from './../../../Common/Input/Index';
+import DOMPurify from 'dompurify';
 
 const Modal = ({ challenge }) => {
 
@@ -61,14 +62,14 @@ const Modal = ({ challenge }) => {
 								<h5 className="modal-title" id="exampleModalLabel">{data.title}</h5>
 							</div>
 
-								<div className={`  ${s.pontssolveContainer} `}>
-									<div>
-										<i className={`${s.cardSolvedIcon}  ${data.solved ? 'text-success' : ''}`}> </i> {data.points} points
-									</div>
-									<div>
-										<button type="button" className={`${s.closebtn}`} data-bs-dismiss="modal" aria-label="Close"><ImCancelCircle /></button>
-									</div>
+							<div className={`  ${s.pontssolveContainer} `}>
+								<div>
+									<i className={`${s.cardSolvedIcon}  ${data.solved ? 'text-success' : ''}`}> </i> {data.points} points
 								</div>
+								<div>
+									<button type="button" className={`${s.closebtn}`} data-bs-dismiss="modal" aria-label="Close"><ImCancelCircle /></button>
+								</div>
+							</div>
 
 
 
@@ -91,8 +92,9 @@ const Modal = ({ challenge }) => {
 						</div>
 
 
-						<div className="modal-body">
-							{data.description}
+						<div className="modal-body" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(data.description) }}>
+							
+							
 						</div>
 						<div className={`${s.likestatus} row`}>
 							<div className='col-sm-8 col-12'>

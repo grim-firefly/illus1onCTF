@@ -30,6 +30,11 @@ const sidebaritems = [
 		icon: FaUserTag,
 		url: 'roles'
 	},
+	{
+		name: 'Challenges',
+		icon: FaUserTag,
+		url: 'challenges'
+	},
 
 
 ]

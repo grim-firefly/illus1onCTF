@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
 import { useSelector } from 'react-redux';
 import { FiEdit, FiTrash } from 'react-icons/fi';
 
-const ShowAllUser = () => {
+const ShowAllChallenges = () => {
 	const column = [
 		{
 			title: 'Name',
@@ -191,4 +191,4 @@ const ShowAllUser = () => {
 
 	);
 }
-export default ShowAllUser;
+export default ShowAllChallenges;

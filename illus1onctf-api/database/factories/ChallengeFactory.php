@@ -21,11 +21,11 @@ class ChallengeFactory extends Factory
             'description' => $this->faker->paragraph,
             'category' => $this->faker->word,
             'flag' => $this->faker->word,
-            'points' => $this->faker->randomNumber,
-            'author_id' => $this->faker->randomNumber,
-            'solves' => $this->faker->randomNumber,
-            'attempts' => $this->faker->randomNumber,
-            
+            'points' => $this->faker->numberBetween(1, 1000),
+            'author_id' => $this->faker->numberBetween(1, 1000),
+            'solves' => $this->faker->numberBetween(1, 1000),
+            'attempts' => $this->faker->numberBetween(1, 1000),
+
         ];
     }
 }

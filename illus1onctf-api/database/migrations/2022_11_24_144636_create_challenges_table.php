@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('description');
             $table->string('category');
             $table->string('flag');
-            $table->string('points');
+            $table->integer('points');
             $table->string('author_id');
             $table->integer('solves');
             $table->integer('attempts');

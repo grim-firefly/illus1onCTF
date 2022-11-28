@@ -2,7 +2,7 @@ import React from 'react';
 import s from './style.module.css';
 import { Outlet } from 'react-router-dom';
 
-const User = () => {
+const Challenges = () => {
 	return (
 		<div className={`${s.container}`}>
 			<div className='d-flex  justify-content-center pt-1 align-items-center'>
@@ -14,4 +14,4 @@ const User = () => {
 		</div>
 	);
 }
-export default User;
+export default Challenges;

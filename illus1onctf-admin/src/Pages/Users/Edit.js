@@ -121,12 +121,12 @@ const EditUser = () => {
 				<div className='row justify-content-center py-2'>
 					<div className='col-10 col-sm-9 col-md-7 col-lg-5 col-xl-4'>
 						<div>
-							<Input placeholder="User Name" defaultValue={name} onChange={(e) => {
+							<Input placeholder="User Name" defaultValue={name} onBlur={(e) => {
 								setName(e.target.value)
 							}} />
 						</div>
 						<div className='my-2'>
-							<Input placeholder="Email" defaultValue={email} onChange={(e) => {
+							<Input placeholder="Email" defaultValue={email} onBlur={(e) => {
 								setEmail(e.target.value)
 							}} />
 						</div>

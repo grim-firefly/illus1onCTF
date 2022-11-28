@@ -27,7 +27,6 @@ const Modal = ({ challenge }) => {
 			fetchChallenge().then(res => {
 				setData(res.challenge)
 				setIsLoading(false);
-				console.log(res.challenge);
 			}).catch(err => {
 				console.log(err)
 				setIsLoading(false);

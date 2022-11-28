@@ -18,6 +18,8 @@ import CreateRole from './../Pages/Role/Create';
 import ShowAllRole from './../Pages/Role/ShowAll';
 import Challenges from '../Pages/Challenges/Index';
 import ShowAllChallenges from '../Pages/Challenges/ShowAll';
+import CreateChallenge from '../Pages/Challenges/Create';
+import EditChallenge from './../Pages/Challenges/Edit';
 
 const MainRoutes = () => {
 	return (
@@ -54,8 +56,8 @@ const MainRoutes = () => {
 						<Challenges />
 					</RequireAdminAuth>} >
 					<Route index element={<ShowAllChallenges />} />
-					<Route path='create' element={<CreateRole />} />
-					<Route path='edit/:id' element={<EditRole />} />
+					<Route path='create' element={<CreateChallenge />} />
+					<Route path='edit/:id' element={<EditChallenge />} />
 				</Route>
 
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CategoryController extends Controller
 {
@@ -28,7 +29,14 @@ class CategoryController extends Controller
         }
         return response()->json([
             'categories' => $categoryList,
-            'total' => $total
+            'total' => $total,
+        ], 200);
+    }
+    public function getActiveCategory(Request $request)
+    {
+        $categoryList = Category::where('is_active', 1)->get(['id', 'name']);
+        return response()->json([
+            'categories' => $categoryList,
         ], 200);
     }
     public function total()

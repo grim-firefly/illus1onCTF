@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::group(['middleware' => ['auth:api', 'role:admin']], function () {
+	Route::get('categories', [CategoryController::class, 'index']);
 	Route::put('categories', [CategoryController::class, 'updateCategory']);
 	Route::post('categories', [CategoryController::class, 'create']);
 	Route::get('categories/{category}', [CategoryController::class, 'getCategory']);
@@ -26,6 +27,6 @@ Route::group(['middleware' => ['auth:api', 'role:admin']], function () {
 	Route::post('roles', [RoleController::class, 'create']);
 	Route::get('roles/{role}', [RoleController::class, 'getRole']);
 	Route::delete('roles/{role}', [RoleController::class, 'delete']);
-	
+
 	Route::resource('challenges', ChallengeController::class);
 });

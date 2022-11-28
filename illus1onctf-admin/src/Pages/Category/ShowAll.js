@@ -113,7 +113,7 @@ const ShowAllCategory = () => {
 		setPage(1)
 		const fetchData = async () => {
 
-			const response = await axios.get('categories', {
+			const response = await axios.get('/admin/categories', {
 				params: {
 					page,
 					pageSize,

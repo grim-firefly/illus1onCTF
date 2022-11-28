@@ -7,7 +7,7 @@ const SelectBox = (props) => {
 			<select className={`form-select ${s.selectbox}`} {...rest}>
 				{
 					options.map((item, index) => {
-						return <option className={`${s.options}`} key={index} value={item.value} >{item.label}</option>
+						return <option  key={index} value={item.value} >{item.label}</option>
 					})
 				}
 			</select>

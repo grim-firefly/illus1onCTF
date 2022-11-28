@@ -9,67 +9,75 @@ import axios from 'axios';
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import SelectBox from '../../Common/SelectBox/Index';
+import JoditEditor from 'jodit-react';
 
-const CreateUser = () => {
+
+const CreateChallenge = () => {
 	const [isLoading, setIsLoading] = useState(false);
-	const [name, setName] = useState('');
-	const [email, setEmail] = useState('');
-	const [password, setPassword] = useState('');
-	const [role, setRole] = useState('admin');
-	const [roleList, setRoleList] = useState([]);
+	const [title, setTitle] = useState('');
+	const [description, setDescription] = useState('');
+	const [category, setCategory] = useState('');
+	const [points, setPoints] = useState('');
+	const [flag, setFlag] = useState('');
+	const [categories, setCategories] = useState([]);
+
 	const navigate = useNavigate();
 	const auth = useSelector(state => state.auth)
 	useEffect(() => {
 		setIsLoading(true)
-		const fetchRoleList = async () => {
-			const response = await axios.get(`/admin/activeroles`);
+		const fetchCategory = async () => {
+			const response = await axios.get('/categories');
 			return response.data;
 		}
-		fetchRoleList().then(data => {
-			// data.user && setName(data.user.name);
-			data.roles && setRoleList(data.roles.map(role => ({ value: role.name, label: role.name })));
+		fetchCategory().then(data => {
+			data.categories && setCategories(data.categories.map(category => ({ value: category.id, label: category.name })));
 			setIsLoading(false)
-		}).catch(err => {
-			console.log(err);
-			setIsLoading(false)
-		})
-	}, [])
-
-	const handleCreate = () => {
-		setIsLoading(true)
-		const createUser = async () => {
-			const response = await axios.post('/admin/users', {
-				name,
-				email,
-				password,
-				role
-			});
-			return response.data;
-		}
-		createUser().then(data => {
-
-			setIsLoading(false)
-			if (data.status === 'success') {
-				Swal.fire({
-					icon: 'success',
-					title: 'User has been created',
-					timer: 1000,
-					padding: '3em',
-					iconColor: 'var(--bs-primary)',
-					timerProgressBar: true,
-					showConfirmButton: false,
-				}).then(() => {
-					navigate('/users')
-				})
-			}
-
 		}).catch(err => {
 			setIsLoading(false)
 			Swal.fire({
 				icon: 'error',
 				title: 'Oops...',
 				text: err.response.data.message,
+			})
+		})
 
+	}, []);
+
+	const handleCreate = () => {
+
+		setIsLoading(true)
+		const createChallenge = async () => {
+			const response = await axios.post('/admin/challenges', {
+				title,
+				description,
+				category,
+				points,
+				flag
+			});
+			return response.data;
+		}
+		createChallenge().then(data => {
+			setIsLoading(false)
+			if (data.status === 'success') {
+				Swal.fire({
+					icon: 'success',
+					title: 'Success',
+					text: data.message,
+				})
+				navigate('/challenges')
+			} else {
+				Swal.fire({
+					icon: 'error',
+					title: 'Oops...',
+					text: data.message,
+				})
+			}
+		}).catch(err => {
+			setIsLoading(false)
+			Swal.fire({
+				icon: 'error',
+				title: 'Oops...',
+				text: err.response.data.message,
 			})
 		})
 
@@ -97,7 +105,7 @@ const CreateUser = () => {
 
 					<div className='row p-2'>
 						<div className='col-2 '>
-							<Link to="/users">	<OutlineButton title="List" /></Link>
+							<Link to="/challenges">	<OutlineButton title="List" /></Link>
 						</div>
 
 					</div>
@@ -105,22 +113,35 @@ const CreateUser = () => {
 					<div className='row justify-content-center py-2'>
 						<div className='col-10 col-sm-9 col-md-7 col-lg-5 col-xl-4'>
 							<div>
-								<Input placeholder="User Name" onChange={(e) => {
-									setName(e.target.value)
+								<Input placeholder="Title" onBlur={(e) => {
+									setTitle(e.target.value)
 								}} />
 							</div>
-							<div className='my-2'>
-								<Input placeholder="Email" type="email" onChange={(e) => {
-									setEmail(e.target.value)
+							<div className='mt-1'>
+								<Input type="number" placeholder="points" onBlur={(e) => {
+									setPoints(e.target.value)
 								}} />
 							</div>
-							<div className='my-2'>
-								<Input placeholder="password" type="password" onChange={(e) => {
-									setPassword(e.target.value)
+							<div className='mt-1' >
+								<Input placeholder="Flag" onBlur={(e) => {
+									setFlag(e.target.value)
 								}} />
 							</div>
-							<div>
-								<SelectBox options={roleList} value="admin" onChange={(e) => setRole(e.target.value)} />
+							<div className='mt-1'>
+								<JoditEditor
+									// ref={editor}
+									// value={content}
+									// config={config}
+									// tabIndex={1} // tabIndex of textarea
+									onBlur={description => setDescription(description)} // preferred to use only this option to update the content for performance reasons
+									placeholder="Description"
+
+								/>
+							</div>
+							<div className='mt-1'>
+								<SelectBox options={categories} placeholder="Category" onChange={(e) => {
+									setCategory(e.target.value)
+								}} />
 							</div>
 
 							<div className='py-2 d-flex flex-row-reverse'>
@@ -136,4 +157,4 @@ const CreateUser = () => {
 		</>
 	);
 }
-export default CreateUser;
+export default CreateChallenge;

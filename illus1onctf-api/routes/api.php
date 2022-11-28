@@ -22,7 +22,7 @@ Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
 Route::get('/user', [AuthController::class, 'user'])->middleware('auth:api');
 Route::get('logout', [AuthController::class, 'logout'])->middleware('auth:api');
-Route::get('categories', [CategoryController::class, 'index']);
+Route::get('categories', [CategoryController::class, 'getActiveCategory']);
 Route::get('challenges', [ChallengeController::class, 'index']);
 Route::get('challenges/{challenge}', [ChallengeController::class, 'show']);
 

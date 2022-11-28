@@ -18,11 +18,11 @@ class ChallengeFactory extends Factory
     {
         return [
             'title' => $this->faker->sentence,
-            'description' => $this->faker->paragraph,
+            'description' => $this->faker->paragraph(3),
             'category' => $this->faker->word,
             'flag' => $this->faker->word,
             'points' => $this->faker->numberBetween(1, 1000),
-            'author_id' => $this->faker->numberBetween(1, 1000),
+            // 'author_id' => $this->faker->numberBetween(1, 1000),
             'solves' => $this->faker->numberBetween(1, 1000),
             'attempts' => $this->faker->numberBetween(1, 1000),
 

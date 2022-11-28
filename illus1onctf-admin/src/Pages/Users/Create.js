@@ -105,22 +105,22 @@ const CreateUser = () => {
 					<div className='row justify-content-center py-2'>
 						<div className='col-10 col-sm-9 col-md-7 col-lg-5 col-xl-4'>
 							<div>
-								<Input placeholder="User Name" onChange={(e) => {
+								<Input placeholder="User Name" onBlur={(e) => {
 									setName(e.target.value)
-								}} />
+								}}  />
 							</div>
 							<div className='my-2'>
-								<Input placeholder="Email" type="email" onChange={(e) => {
+								<Input placeholder="Email" type="email" onBlur={(e) => {
 									setEmail(e.target.value)
-								}} />
+								}}/>
 							</div>
 							<div className='my-2'>
-								<Input placeholder="password" type="password" onChange={(e) => {
+								<Input placeholder="password" type="password" onBlur={(e) => {
 									setPassword(e.target.value)
 								}} />
 							</div>
 							<div>
-								<SelectBox options={roleList} value="admin" onChange={(e) => setRole(e.target.value)} />
+								<SelectBox options={roleList} value="admin" onBlur={(e) => setRole(e.target.value)} />
 							</div>
 
 							<div className='py-2 d-flex flex-row-reverse'>

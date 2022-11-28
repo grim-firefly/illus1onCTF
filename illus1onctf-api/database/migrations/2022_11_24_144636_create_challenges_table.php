@@ -20,9 +20,9 @@ return new class extends Migration
             $table->string('category');
             $table->string('flag');
             $table->integer('points');
-            $table->string('author_id');
-            $table->integer('solves');
-            $table->integer('attempts');
+            $table->string('author_id')->default(1);
+            $table->integer('solves')->default(0);
+            $table->integer('attempts')->default(0);
             $table->timestamps();
         });
     }

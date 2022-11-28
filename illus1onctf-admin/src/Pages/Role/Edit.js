@@ -106,12 +106,12 @@ const EditRole = () => {
 				<div className='row justify-content-center py-2'>
 					<div className='col-10 col-sm-9 col-md-7 col-lg-5 col-xl-4'>
 						<div>
-							<Input placeholder="Role Name" defaultValue={name} onChange={(e) => {
+							<Input placeholder="Role Name" defaultValue={name} onBlur={(e) => {
 								setName(e.target.value)
 							}} />
 						</div>
 						<div className='py-2 d-flex flex-row-reverse'>
-							<Checkbox label="is Active ?" defaultChecked={is_active} onChange={(e) => {
+							<Checkbox label="is Active ?" defaultChecked={is_active} onBlur={(e) => {
 								setIs_active(e.target.checked)
 							}} />
 						</div>

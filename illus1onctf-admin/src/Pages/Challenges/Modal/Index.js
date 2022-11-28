@@ -27,7 +27,6 @@ const Modal = ({ challenge }) => {
 			fetchChallenge().then(res => {
 				setData(res.challenge)
 				setIsLoading(false);
-				console.log(res.challenge);
 			}).catch(err => {
 				console.log(err)
 				setIsLoading(false);
@@ -60,12 +59,11 @@ const Modal = ({ challenge }) => {
 						<div className={`modal-header ${s.headerTop} `}>
 							<div className='d-flex gap-2'>
 								<h5 className="modal-title" id="exampleModalLabel">{data.title}</h5>
-								<button onClick={handleBookMark} className={`${s.bookmarkbtn} ${data.saved ? s.bookmarkremovebtn : ''}`}>{data.saved ? <BsBookmarkX /> : <BsBookmarkHeart />} </button>
 							</div>
 
 								<div className={`  ${s.pontssolveContainer} `}>
 									<div>
-										<i className={`${s.cardSolvedIcon}  ${data.solved ? 'text-success' : ''}`}>{data.solved ? <FiUserCheck /> : < FiUser />} </i> | {data.points} points
+										<i className={`${s.cardSolvedIcon}  ${data.solved ? 'text-success' : ''}`}> </i> {data.points} points
 									</div>
 									<div>
 										<button type="button" className={`${s.closebtn}`} data-bs-dismiss="modal" aria-label="Close"><ImCancelCircle /></button>
@@ -101,9 +99,7 @@ const Modal = ({ challenge }) => {
 								137,671 solves / 141,523 users attempted (97%)
 							</div>
 							<div className='d-flex align-items-center col-sm-4 col-12'>
-								<button className={`${s.likeDislike}`}><BiDislike /></button>
 								<div className='px-1'>89% Liked</div>
-								<button className={`${s.likeDislike}`}><BiLike /></button>
 							</div>
 						</div>
 						<div className="modal-footer d-flex ">

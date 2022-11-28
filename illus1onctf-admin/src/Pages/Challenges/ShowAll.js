@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from "axios";
 import OutlineButton from '../../Common/Button/Outline/Index';
-import { BsSearch } from 'react-icons/bs';
+import { BsEye, BsSearch } from 'react-icons/bs';
 import Input from '../../Common/Input/Index';
 import { Link } from 'react-router-dom';
 import { FaPlus } from 'react-icons/fa';
@@ -47,7 +47,7 @@ const ShowAllChallenges = () => {
 							}} ><i><FiTrash /></i></button>
 							<Link className='btn btn-warning' to={`edit/${record.id}`} replace={true} ><i><FiEdit /></i></Link>
 
-							<button className='btn btn-primary' data={record} data-id={record.id} data-bs-toggle="modal" data-bs-target="#viewChallengeModal" onClick={handleViewChallenge}>Edit</button>
+							<button className='btn btn-primary' data={record} data-id={record.id} data-bs-toggle="modal" data-bs-target="#viewChallengeModal" onClick={handleViewChallenge}><BsEye/></button>
 
 						</div>
 
@@ -100,7 +100,6 @@ const ShowAllChallenges = () => {
 					return response.data;
 				}
 				deleteData().then(data => {
-					setChallenges(challenges.filter(user => user.id !== record.id))
 					setIsLoading(false)
 					Swal.fire({
 						icon: 'success',

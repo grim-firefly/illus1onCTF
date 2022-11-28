@@ -11,27 +11,29 @@ import { PropagateLoader } from 'react-spinners';
 import Swal from 'sweetalert2';
 import { useSelector } from 'react-redux';
 import { FiEdit, FiTrash } from 'react-icons/fi';
+import Modal from './Modal/Index';
 
 const ShowAllChallenges = () => {
 	const column = [
 		{
-			title: 'Name',
-			dataIndex: 'name',
+			title: 'title',
+			dataIndex: 'title',
 			key: 'id',
 		},
 		{
-			title: 'Email',
-			dataIndex: 'email',
+			title: 'Category',
+			dataIndex: 'category',
 			key: 'id',
 		}, {
-			title: 'Role',
-			dataIndex: 'role',
+			title: 'points',
+			dataIndex: 'points',
 			key: 'id',
-			render: (role) => (
-				<>
-					{role =='admin' ? <span className='badge bg-danger'>Admin</span> : <span className='badge bg-success'>User</span>}
-				</>
-			)
+
+		},
+		{
+			title: 'Author',
+			dataIndex: 'author_id',
+			key: 'id',
 		},
 		{
 			title: 'Action',
@@ -44,6 +46,9 @@ const ShowAllChallenges = () => {
 								handleDelete(record)
 							}} ><i><FiTrash /></i></button>
 							<Link className='btn btn-warning' to={`edit/${record.id}`} replace={true} ><i><FiEdit /></i></Link>
+
+							<button className='btn btn-primary' data={record} data-id={record.id} data-bs-toggle="modal" data-bs-target="#viewChallengeModal" onClick={handleViewChallenge}>Edit</button>
+
 						</div>
 
 					</>
@@ -58,12 +63,16 @@ const ShowAllChallenges = () => {
 	const [pageSize, setPageSize] = useState(10);
 	const [isLoading, setIsLoading] = useState(false);
 	const [totalData, setTotalData] = useState(0);
-	const [users, setUsers] = useState([]);
+	const [challenges, setChallenges] = useState([]);
 	const [refresher, setRefresher] = useState(false);
 	const [search, setSearch] = useState('');
+	const [viewChallenge, setViewChallenge] = React.useState(null);
+
 	const auth = useSelector(state => state.auth)
 
-
+	const handleViewChallenge = (e) => {
+		setViewChallenge(e.currentTarget.dataset.id);
+	}
 
 	const handleDelete = (record) => {
 		Swal.fire({
@@ -83,7 +92,7 @@ const ShowAllChallenges = () => {
 
 				const deleteData = async () => {
 
-					const response = await axios.delete(`/admin/users/${record.id}`, {
+					const response = await axios.delete(`/admin/challenges/${record.id}`, {
 						headers: {
 							'Autorization': `Bearer ${auth.token}`,
 						}
@@ -91,7 +100,7 @@ const ShowAllChallenges = () => {
 					return response.data;
 				}
 				deleteData().then(data => {
-					setUsers(users.filter(user => user.id !== record.id))
+					setChallenges(challenges.filter(user => user.id !== record.id))
 					setIsLoading(false)
 					Swal.fire({
 						icon: 'success',
@@ -117,7 +126,7 @@ const ShowAllChallenges = () => {
 		setPage(1)
 		const fetchData = async () => {
 
-			const response = await axios.get('/admin/users', {
+			const response = await axios.get('/challenges', {
 				params: {
 					page,
 					pageSize,
@@ -130,7 +139,7 @@ const ShowAllChallenges = () => {
 
 
 		fetchData().then(data => {
-			setUsers(data.users)
+			setChallenges(data.challenges)
 			setTotalData(data.total)
 			setIsLoading(false)
 		}).catch(error => {
@@ -160,6 +169,7 @@ const ShowAllChallenges = () => {
 				</div>
 			</div>
 			<div className='p-2'>
+				<Modal challenge={viewChallenge} />
 				<Table
 
 					columns={column}
@@ -169,7 +179,7 @@ const ShowAllChallenges = () => {
 						indicator: <PropagateLoader color={"#1B98F5"} />
 					}}
 
-					dataSource={users}
+					dataSource={challenges}
 					rowKey={record => record.id}
 					pagination={{
 						total: totalData,

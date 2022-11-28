@@ -24,7 +24,7 @@ class ChallengeController extends Controller
         $minPoints = $request->input('minPoints', 0);
         $maxPoints = $request->input('maxPoints', 1000);
         $challengeList = Challenge::where('title', 'like', '%' . $search . '%')
-            ->where('points', '<', $maxPoints??1000)->where('points', '>', $minPoints??0)
+            ->where('points', '<', $maxPoints ?? 1000)->where('points', '>', $minPoints ?? 0)
             ->orderby('id', 'desc')->offset(($page - 1) * $pageSize)->limit($pageSize)->get();
         $challengeList->makeHidden(['created_at', 'updated_at', 'flag']);
         $total = Challenge::where('title', 'like', '%' . $search . '%')->count();
@@ -40,6 +40,13 @@ class ChallengeController extends Controller
         return response()->json([
             'challenge' => $challenge,
             'user' => Auth::user()
+        ], 200);
+    }
+    public function destroy(Challenge $challenge)
+    {
+        $challenge->delete();
+        return response()->json([
+            'message' => 'Challenge deleted successfully',
         ], 200);
     }
 }

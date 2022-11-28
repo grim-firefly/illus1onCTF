@@ -1,0 +1,121 @@
+.modalbody {
+	color: var(--bs-secondary);
+}
+
+.headerTop {
+	padding-bottom: 0px !important;
+	border-bottom: none !important;
+	align-items: flex-start;
+}
+.pontssolveContainer{
+	height: 100% !important;
+	min-width: 140px !important;
+	display: flex;
+	gap: 0.25rem;
+	margin-top: 0;
+}
+
+.headerbottom {
+	padding: 0.5rem 1rem;
+	font-size: 0.75rem;
+	border-bottom: 1px solid var(--bs-gray-300);
+}
+
+.author {
+	color: var(--bs-secondary);
+	text-transform: uppercase;
+	margin-bottom: 0.35rem;
+}
+
+.authortitle {
+	font-weight: 500;
+}
+
+.bookmarkbtn {
+	background: transparent;
+	border: 1px solid var(--bs-gray-300);
+	color: var(--bs-primary);
+	border-radius: 0.25rem;
+	padding: 0.125rem 0.25rem;
+	transition: all 100ms linear;
+	height: 2rem;
+	margin-right: 0.25rem;
+
+}
+
+.bookmarkbtn:hover {
+	border: 1px solid var(--bs-primary);
+	box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25);
+}
+
+.bookmarkremovebtn {
+	background: transparent;
+	border: 1px solid var(--bs-gray-300);
+	color: #FFFFFF;
+	border-radius: 0.25rem;
+	padding: 0.125rem 0.25rem;
+	background-color: var(--bs-primary);
+	transition: all 100ms linear;
+
+}
+
+.closebtn {
+	background: transparent;
+	border: none;
+	color: var(--bs-primary);
+	border-radius: 0.25rem;
+	padding: 0px;
+	font-size: 1.25rem;
+	color: rgba(255, 0, 0, 0.6);
+}
+
+.closebtn:hover {
+	color: rgba(255, 0, 0);
+
+}
+
+.cardSolvedIcon {
+	font-size: 1.25rem;
+}
+
+.tagLink {
+	text-decoration: none;
+	color: #FFFFFF;
+	background-color: var(--bs-primary);
+	border-radius: 0.25rem;
+	padding: 0.125rem 0.5rem;
+	transition: all 150ms linear;
+}
+
+.tagLink:hover {
+	color: #FFFFFF;
+	box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25);
+}
+
+.likestatus {
+	background-color: var(--bs-gray-600);
+	color: #FFFFFF;
+	display: flex;
+	align-items: center;
+	padding: 1rem;
+	text-transform: capitalize;
+}
+
+.likeDislike {
+	color: var(--bs-primary);
+	background-color: transparent;
+	border: none;
+	font-size: 1.25rem;
+	/* border: 1px solid var(--bs-gray-300); */
+	/* padding: 0.125rem 0.25rem; */
+	width: 2rem;
+	height: 2rem;
+	/* line-height: 2rem; */
+	border-radius: 5rem;
+}
+
+.likeDislike:hover {
+	color: #FFFFFF;
+	background-color: var(--bs-primary);
+	box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25);
+}

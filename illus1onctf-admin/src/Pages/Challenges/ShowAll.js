@@ -47,7 +47,7 @@ const ShowAllChallenges = () => {
 							}} ><i><FiTrash /></i></button>
 							<Link className='btn btn-warning' to={`edit/${record.id}`} replace={true} ><i><FiEdit /></i></Link>
 
-							<button className='btn btn-primary' data={record} data-id={record.id} data-bs-toggle="modal" data-bs-target="#viewChallengeModal" onClick={handleViewChallenge}><BsEye/></button>
+							<button className='btn btn-primary' data={record} data-id={record.id} data-bs-toggle="modal" data-bs-target="#viewChallengeModal" onClick={handleViewChallenge}><BsEye /></button>
 
 						</div>
 
@@ -185,6 +185,7 @@ const ShowAllChallenges = () => {
 						onChange: (page) => {
 							setPage(page)
 						},
+						showSizeChanger: true,
 						onShowSizeChange: (current, size) => {
 							setPage(current)
 							setPageSize(size)

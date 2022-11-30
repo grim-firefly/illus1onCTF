@@ -4,7 +4,7 @@ import { ImCancelCircle } from 'react-icons/im';
 import s from './style.module.css';
 import { FiUserCheck, FiUser } from 'react-icons/fi';
 import { BsFlag } from 'react-icons/bs';
-import { BiDislike } from 'react-icons/bi';
+import { BiDislike, BiShowAlt } from 'react-icons/bi';
 import { BiLike } from 'react-icons/bi';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -19,7 +19,7 @@ const Modal = ({ challenge }) => {
 	const [data, setData] = useState({});
 	const [isLoading, setIsLoading] = useState(false);
 	const auth = useSelector(state => state.auth);
-
+	const [flag, setFlag] = useState('');
 	useEffect(() => {
 		if (challenge) {
 			setIsLoading(true);
@@ -41,6 +41,35 @@ const Modal = ({ challenge }) => {
 		setData({
 			...data,
 			saved: !data.saved
+		});
+	}
+	const handleSubmit = (e) => {
+		setIsLoading(true);
+		const submitFlag = async () => {
+			const response = await axios.post('http://127.0.0.1:8000/api/submit', {
+				challenge_id: parseInt(challenge),
+				flag: flag
+			});
+			return response.data;
+		}
+		submitFlag().then(res => {
+			if (res.status == 'success') {
+
+				if (res.message == 'correct') {
+					setData({
+						...data,
+						solved: true
+					});
+					
+				}
+
+			}
+			setIsLoading(false);
+
+
+		}).catch(err => {
+			console.log(err);
+			setIsLoading(false);
 		});
 	}
 	return (
@@ -111,10 +140,10 @@ const Modal = ({ challenge }) => {
 						</div>
 						<div className="modal-footer d-flex ">
 							<div className='flex-grow-1'>
-								<Input icon={BsFlag} disabled={!auth.isAuthenticated} placeholder="illus1onCTF{FLAG}" />
+								<Input icon={BsFlag} onBlur={(e) => setFlag(e.target.value)} disabled={!auth.isAuthenticated} placeholder="illus1onCTF{FLAG}" />
 
 							</div>
-							<button disabled={!auth.isAuthenticated} type="button" className="btn btn-primary">Submit Flag</button>
+							<button disabled={!auth.isAuthenticated} onClick={handleSubmit} type="button" className="btn btn-primary">Submit Flag</button>
 						</div>
 					</div>
 					}

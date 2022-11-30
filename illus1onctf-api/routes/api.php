@@ -26,6 +26,7 @@ Route::get('categories', [CategoryController::class, 'getActiveCategory']);
 Route::get('challenges', [ChallengeController::class, 'index']);
 Route::get('challenges/{challenge}', [ChallengeController::class, 'show']);
 
+Route::post('submit', [ChallengeController::class, 'submit'])->middleware('auth:api');
 
 
 

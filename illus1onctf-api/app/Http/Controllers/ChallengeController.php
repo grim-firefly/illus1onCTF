@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Challenge;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class ChallengeController extends Controller
 {
@@ -74,6 +75,7 @@ class ChallengeController extends Controller
             'points' => request('points'),
             'flag' => request('flag'),
             'category' => request('category'),
+
         ]);
         if ($success) {
             return response()->json([
@@ -92,5 +94,44 @@ class ChallengeController extends Controller
         return response()->json([
             'message' => 'Challenge deleted successfully',
         ], 200);
+    }
+
+    public function submit(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'challenge_id' => 'required|integer',
+            'flag' => 'required|string',
+        ]);
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Invalid request',
+            ], 400);
+        }
+        $user = $request->user();
+        if ($user->role != 'user') {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'You are not a user',
+
+            ], 400);
+        }
+        $flag = Challenge::find($request->input('challenge_id'))->flag;
+        $solveValue = $request->input('flag') === $flag ? 'correct' : 'wrong';
+        $success = $user->submissions()->create([
+            'challenge_id' => $request->input('challenge_id'),
+            'flag' => $request->input('flag'),
+            'solved' => $solveValue,
+        ]);
+        if ($success) {
+            return response()->json([
+                'status' => 'success',
+                'message' => $solveValue,
+            ], 200);
+        }
+        return response()->json([
+            'status' => 'error',
+            'message' => 'Submission failed',
+        ], 400);
     }
 }

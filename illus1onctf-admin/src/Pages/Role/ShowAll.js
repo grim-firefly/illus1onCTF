@@ -167,8 +167,10 @@ const ShowAllRole = () => {
 
 					dataSource={roles}
 					rowKey={record => record.id}
+
 					pagination={{
 						total: totalData,
+						showSizeChanger: true,
 						onChange: (page) => {
 							setPage(page)
 						},

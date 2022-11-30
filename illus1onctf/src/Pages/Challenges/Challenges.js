@@ -52,6 +52,7 @@ const Challenges = () => {
 
 	}, [page, pageSize, search, maxPoints, minPoints]);
 
+	
 
 	const handleSearch = (e) => {
 		setTimeout(() => {

@@ -29,7 +29,7 @@ const ShowAllUser = () => {
 			key: 'id',
 			render: (role) => (
 				<>
-					{role =='admin' ? <span className='badge bg-danger'>Admin</span> : <span className='badge bg-success'>User</span>}
+					{role == 'admin' ? <span className='badge bg-danger'>Admin</span> : <span className='badge bg-success'>User</span>}
 				</>
 			)
 		},
@@ -176,6 +176,7 @@ const ShowAllUser = () => {
 						onChange: (page) => {
 							setPage(page)
 						},
+						showSizeChanger: true,
 						onShowSizeChange: (current, size) => {
 							setPage(current)
 							setPageSize(size)

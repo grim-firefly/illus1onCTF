@@ -1,0 +1,11 @@
+.carousel {
+	height: 600px !important;
+}
+.carouselitem{
+	height: 600px !important;
+}
+.carouselImage {
+	min-height: 600px !important;
+	width: 100% !important;
+	object-fit: cover !important;
+}

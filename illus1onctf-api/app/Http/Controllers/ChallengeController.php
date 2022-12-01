@@ -37,6 +37,7 @@ class ChallengeController extends Controller
             });
             return response()->json([
                 'challenges' => $challengeList,
+                'total' => $total,
             ]);
         }
 

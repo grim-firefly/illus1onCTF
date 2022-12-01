@@ -13,8 +13,9 @@ import axios from 'axios';
 import { PropagateLoader } from 'react-spinners';
 import DOMPurify from 'dompurify';
 import { useSelector } from 'react-redux';
+import Swal from 'sweetalert2';
 
-const Modal = ({ challenge,handleSolve }) => {
+const Modal = ({ challenge, handleSolve }) => {
 
 	const [data, setData] = useState({});
 	const [isLoading, setIsLoading] = useState(false);
@@ -61,7 +62,27 @@ const Modal = ({ challenge,handleSolve }) => {
 						solved: true
 					});
 					handleSolve(challenge);
-					
+					Swal.fire({
+						icon: 'success',
+						title: 'FLag is correct',
+						timer: 1000,
+						padding: '3em',
+						iconColor: 'var(--bs-primary)',
+						timerProgressBar: true,
+						showConfirmButton: false,
+					})
+
+				}
+				else {
+					Swal.fire({
+						icon: 'error',
+						title: 'FLag is incorrect',
+						timer: 1000,
+						padding: '3em',
+						iconColor: 'var(--bs-primary)',
+						timerProgressBar: true,
+						showConfirmButton: false,
+					})
 				}
 
 			}

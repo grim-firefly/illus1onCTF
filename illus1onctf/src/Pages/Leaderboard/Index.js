@@ -5,10 +5,10 @@ import { useEffect } from 'react';
 import { PropagateLoader } from 'react-spinners';
 
 const Leaderboard = () => {
-	
+
 	return (
-		<>		
-			 <div>
+		<>
+			<div>
 				<div className='container'>
 					<div className="row">
 						<div className="col-md-5 col-lg-4 col-xl-3  mt-2">
@@ -23,6 +23,31 @@ const Leaderboard = () => {
 							{/* <ChallengeList handleViewChallenge={handleViewChallenge} /> */}
 							<div className='row'>
 								<div className='col-12 mt-1'>
+									{/* <Table
+
+										columns={column}
+										rowSelection={true}
+										loading={{
+											spinning: isLoading,
+											indicator: <PropagateLoader color={"#1B98F5"} />
+										}}
+
+										dataSource={roles}
+										rowKey={record => record.id}
+
+										pagination={{
+											total: totalData,
+											showSizeChanger: true,
+											onChange: (page) => {
+												setPage(page)
+											},
+											onShowSizeChange: (current, size) => {
+												setPage(current)
+												setPageSize(size)
+											}
+										}}
+
+									/> */}
 								</div>
 
 							</div>

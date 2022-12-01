@@ -14,7 +14,7 @@ import { PropagateLoader } from 'react-spinners';
 import DOMPurify from 'dompurify';
 import { useSelector } from 'react-redux';
 
-const Modal = ({ challenge }) => {
+const Modal = ({ challenge,handleSolve }) => {
 
 	const [data, setData] = useState({});
 	const [isLoading, setIsLoading] = useState(false);
@@ -60,6 +60,7 @@ const Modal = ({ challenge }) => {
 						...data,
 						solved: true
 					});
+					handleSolve(challenge);
 					
 				}
 
@@ -143,7 +144,7 @@ const Modal = ({ challenge }) => {
 								<Input icon={BsFlag} onBlur={(e) => setFlag(e.target.value)} disabled={!auth.isAuthenticated} placeholder="illus1onCTF{FLAG}" />
 
 							</div>
-							<button disabled={!auth.isAuthenticated} onClick={handleSubmit} type="button" className="btn btn-primary">Submit Flag</button>
+							<button disabled={!auth.isAuthenticated} onClick={handleSubmit} type="button" className="btn btn-primary" data-bs-dismiss="modal" >Submit Flag</button>
 						</div>
 					</div>
 					}

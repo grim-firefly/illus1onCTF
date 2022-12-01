@@ -29,6 +29,16 @@ class ChallengeController extends Controller
             ->orderby('id', 'desc')->offset(($page - 1) * $pageSize)->limit($pageSize)->get();
         $challengeList->makeHidden(['created_at', 'updated_at', 'flag']);
         $total = Challenge::where('title', 'like', '%' . $search . '%')->count();
+        if ($request->user('api')) {
+            $submission = $request->user('api')->submissions()->where('solved', 'correct')->distinct()->pluck('challenge_id');
+            $challengeList->map(function ($challenge) use ($submission) {
+                $challenge->solved = $submission->contains($challenge->id);
+                return $challenge;
+            });
+            return response()->json([
+                'challenges' => $challengeList,
+            ]);
+        }
 
         return response()->json([
             'challenges' => $challengeList,

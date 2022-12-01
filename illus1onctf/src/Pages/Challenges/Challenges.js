@@ -52,7 +52,7 @@ const Challenges = () => {
 
 	}, [page, pageSize, search, maxPoints, minPoints]);
 
-	
+
 
 	const handleSearch = (e) => {
 		setTimeout(() => {
@@ -73,6 +73,14 @@ const Challenges = () => {
 		}, 500)
 
 	}
+	const makeSolved = (e) => {
+		setChallenges(challenges.map(challenge => {
+			if (challenge.id == e) {
+				challenge.solved = true;
+			}
+			return challenge;
+		}))
+	}
 	return (
 		<>
 			{
@@ -87,7 +95,7 @@ const Challenges = () => {
 				}} />
 			}
 			<div className='container'>
-				<Modal challenge={viewChallenge} />
+				<Modal challenge={viewChallenge} handleSolve={makeSolved} />
 				<div className="row">
 					<div className="col-md-5 col-lg-4 col-xl-3  mt-2">
 

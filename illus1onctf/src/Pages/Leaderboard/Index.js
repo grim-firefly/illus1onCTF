@@ -3,8 +3,51 @@ import Paginator from '../../Common/Paginator';
 import Filters from './Components/Filters/Filters';
 import { useEffect } from 'react';
 import { PropagateLoader } from 'react-spinners';
+import  axios  from 'axios';
+import { Table } from 'antd';
 
 const Leaderboard = () => {
+	const column = [
+		{
+			title: '#',
+			key: 'id',
+			render: (text, record, index) => {
+				return index + 1;
+			}
+		}, {
+			title: 'Email',
+			dataIndex: 'users',
+			key: 'id',
+			render: (text, record) => {
+				return text ? text.email : 'no email';
+			}
+
+		},
+		{
+			title: 'Points',
+			dataIndex: 'points',
+			key: 'id'
+		}
+	]
+
+	const [scoreList, setScoreList] = useState([]);
+	const [isLoading, setIsLoading] = useState(false);
+	useEffect(() => {
+		setIsLoading(true);
+		const fetchScoreList = async () => {
+			const response = await axios.get('/leaderboard');
+			return response.data;
+		}
+		fetchScoreList().then(data => {
+			setScoreList(data.ScoreList);
+			console.log(data.ScoreList);
+			setIsLoading(false);
+		}).catch(err => {
+			console.log(err);
+			setIsLoading(false);
+		});
+	}, []);
+
 
 	return (
 		<>
@@ -23,7 +66,7 @@ const Leaderboard = () => {
 							{/* <ChallengeList handleViewChallenge={handleViewChallenge} /> */}
 							<div className='row'>
 								<div className='col-12 mt-1'>
-									{/* <Table
+									<Table
 
 										columns={column}
 										rowSelection={true}
@@ -32,22 +75,22 @@ const Leaderboard = () => {
 											indicator: <PropagateLoader color={"#1B98F5"} />
 										}}
 
-										dataSource={roles}
+										dataSource={scoreList}
 										rowKey={record => record.id}
 
 										pagination={{
-											total: totalData,
+											total: scoreList.length,
 											showSizeChanger: true,
-											onChange: (page) => {
-												setPage(page)
-											},
-											onShowSizeChange: (current, size) => {
-												setPage(current)
-												setPageSize(size)
-											}
+											// onChange: (page) => {
+											// 	setPage(page)
+											// },
+											// onShowSizeChange: (current, size) => {
+											// 	setPage(current)
+											// 	setPageSize(size)
+											// }
 										}}
 
-									/> */}
+									/>
 								</div>
 
 							</div>

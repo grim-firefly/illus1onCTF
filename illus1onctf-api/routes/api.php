@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ChallengeController;
+use App\Http\Controllers\PublicController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -28,7 +29,7 @@ Route::get('challenges/{challenge}', [ChallengeController::class, 'show']);
 
 Route::post('submit', [ChallengeController::class, 'submit'])->middleware('auth:api');
 Route::get('submissions', [ChallengeController::class, 'submissions'])->middleware('auth:api');
-
+Route::get('leaderboard', [PublicController::class, 'leaderboard']);
 
 
 Route::prefix('admin')->group(base_path('routes/api/admin.php'));

@@ -127,13 +127,24 @@ class ChallengeController extends Controller
 
             ], 400);
         }
-        $flag = Challenge::find($request->input('challenge_id'))->flag;
-        $solveValue = $request->input('flag') === $flag ? 'correct' : 'wrong';
+        $challenge = Challenge::find($request->input('challenge_id'));
+        $solveValue = $request->input('flag') === $challenge->flag ? 'correct' : 'wrong';
+        $already = $user->submissions()->where('challenge_id', $request->input('challenge_id'))->first();
         $success = $user->submissions()->create([
             'challenge_id' => $request->input('challenge_id'),
             'flag' => $request->input('flag'),
             'solved' => $solveValue,
         ]);
+        if ($success && $solveValue == 'correct' && !$already) {
+            if (!$user->scoreboard) {
+                $user->scoreboard()->create([
+                    'points' => $challenge->points,
+                ]);
+            } else {
+
+                $user->scoreboard->increment('points', $challenge->points);
+            }
+        }
         if ($success) {
             return response()->json([
                 'status' => 'success',
@@ -149,13 +160,16 @@ class ChallengeController extends Controller
     public function submissions(Request $request)
     {
         // ['id', 'flag', 'solved', 'created_at']
+        $page = $request->input('page', 1);
+        $pageSize = $request->input('pageSize', 10);
         if ($request->user()) {
-            $submissions = $request->user()->submissions()->with(['challenges'=>function($query){
-                $query->select('id','title')->get();
-            }])->get(['id', 'flag', 'solved', 'created_at','challenge_id']);
+            $submissions = $request->user()->submissions()->offset(($page - 1) * $pageSize)->limit($pageSize)->with(['challenges' => function ($query) {
+                $query->select('id', 'title')->get();
+            }])->get(['id', 'flag', 'solved', 'created_at', 'challenge_id']);
+            $total = $request->user()->submissions()->count();
             return response()->json([
                 'submissions' => $submissions,
-                
+                'total' => $total,
             ], 200);
         }
     }

@@ -8,21 +8,31 @@ import { render } from '@testing-library/react';
 const Submissions = () => {
 	const [submissions, setSubmissions] = useState([]);
 	const [isLoading, setIsLoading] = useState(false);
+	const [total, setTotal] = useState(0);
+	const [pageSize, setPageSize] = useState(10);
+	const [page, setPage] = useState(1);
 	useEffect(() => {
 		setIsLoading(true);
 		const fetchSubmissions = async () => {
-			const response = await axios.get('/submissions');
+			const response = await axios.get('/submissions', {
+				params: {
+					page,
+					pageSize
+				}
+			});
 			return response.data;
 		}
 		fetchSubmissions().then(data => {
 			setSubmissions(data.submissions);
+			setTotal(data.total);
+			console.log(data);
 			setIsLoading(false);
 		}).catch(err => {
 			console.log(err);
 			setIsLoading(false);
 		});
 
-	}, []);
+	}, [page, pageSize]);
 	const column = [
 		{
 			title: 'title',
@@ -52,42 +62,57 @@ const Submissions = () => {
 		}
 	]
 	return (
-		<div>
-			<div className="container">
-				<div className={s.submissions}>
-					<h1 className={`${s.heading}`}>
-						My Submissions
-					</h1>
-					<div className='p-2'>
-						<Table
+		<>	{
+			isLoading && < PropagateLoader loading={isLoading} color={"#1B98F5"} cssOverride={{
+				display: "block",
+				position: "absolute",
+				left: "50%",
+				top: "50%",
+				transform: "translate(-50%, -50%)",
+				zIndex: "999999999",
+				borderColor: "red",
+			}} />
+		}
+			{!isLoading && <div>
+				<div className="container">
+					<div className={s.submissions}>
+						<h1 className={`${s.heading}`}>
+							My Submissions
+						</h1>
+						<div className='p-2'>
+							<Table
 
-							columns={column}
-							rowSelection={true}
-							loading={{
-								spinning: isLoading,
-								indicator: <PropagateLoader color={"#1B98F5"} />
-							}}
+								columns={column}
+								rowSelection={true}
+								loading={{
+									spinning: isLoading,
+									indicator: <PropagateLoader color={"#1B98F5"} />
+								}}
 
-							dataSource={submissions}
-							rowKey={record => record.id}
-							pagination={{
-								total: submissions.length,
-								// onChange: (page) => {
-								// 	setPage(page)
-								// },
-								// showSizeChanger: true,
-								// onShowSizeChange: (current, size) => {
-								// 	setPage(current)
-								// 	setPageSize(size)
-								// }
-							}}
+								dataSource={submissions}
+								rowKey={record => record.id}
+								pagination={{
+									total: total,
+									onChange: (page) => {
+										setPage(page)
+									},
+									defaultCurrent: page,
+									showSizeChanger: true,
+									defaultPageSize: pageSize,
+									onShowSizeChange: (current, size) => {
+										setPage(current)
+										setPageSize(size)
+									}
+								}}
 
-						/>
+							/>
+						</div>
 					</div>
 				</div>
-			</div>
 
-		</div>
+			</div>
+			}
+		</>
 	);
 }
 export default Submissions;

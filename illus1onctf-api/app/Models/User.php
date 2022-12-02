@@ -47,4 +47,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(Submission::class);
     }
+    public function scoreboard()
+    {
+        return $this->hasOne(Scoreboard::class);
+    }
 }

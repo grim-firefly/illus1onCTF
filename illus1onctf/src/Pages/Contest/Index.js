@@ -28,6 +28,7 @@ const Contest = () => {
 				</div>
 
 			</div>
+			
 		</div>
 	);
 }

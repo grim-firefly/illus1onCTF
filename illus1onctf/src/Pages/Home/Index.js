@@ -5,6 +5,7 @@ import axios from 'axios';
 import Header from './../../Common/Header/Index';
 import { setAuth } from '../../Store/Features/authSlice';
 import { PropagateLoader } from 'react-spinners';
+import Footer from '../../Common/Footer/Index';
 
 const Home = () => {
 	const auth = useSelector(state => state.auth);
@@ -59,6 +60,7 @@ const Home = () => {
 				<>
 					<Header />
 					<Outlet />
+					<Footer/>
 				</>
 			}
 

@@ -12,6 +12,7 @@ import { Pagination } from 'antd';
 import { useSelector } from 'react-redux';
 
 
+
 const Challenges = () => {
 	const [viewChallenge, setViewChallenge] = React.useState(null);
 	const handleViewChallenge = (e) => {
@@ -129,6 +130,7 @@ const Challenges = () => {
 					}
 				</div>
 			</div >
+			
 		</>
 
 	);

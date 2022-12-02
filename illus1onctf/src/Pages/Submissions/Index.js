@@ -15,7 +15,6 @@ const Submissions = () => {
 			return response.data;
 		}
 		fetchSubmissions().then(data => {
-			console.log(data.submissions);
 			setSubmissions(data.submissions);
 			setIsLoading(false);
 		}).catch(err => {

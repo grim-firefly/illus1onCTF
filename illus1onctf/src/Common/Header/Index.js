@@ -63,7 +63,7 @@ const Header = () => {
 							<div className={` ${showLinks ? `${s.navbar_items_toggler} ${s.navbar_tmp} ` : ''} ${s.navbar_items}`} id="navbaritems">
 								{auth.isAuthenticated && <div><NavLink to="dashboard" className={`${s.navLink}`} onClick={() => setShowLinks(false)} >Dashboard</NavLink></div>}
 								<div><NavLink to="challenges" onClick={() => setShowLinks(false)} className={`${s.navLink}`}>Challenges</NavLink></div>
-								<div><NavLink to="contest" onClick={() => setShowLinks(false)} className={`${s.navLink}`} >Contest</NavLink></div>
+								{/* <div><NavLink to="contest" onClick={() => setShowLinks(false)} className={`${s.navLink}`} >Contest</NavLink></div> */}
 								<div><NavLink to="leaderboard" onClick={() => setShowLinks(false)} className={`${s.navLink}`} >LeaderBoard</NavLink></div>
 								{!auth.isAuthenticated && <div><NavLink to="login" onClick={() => setShowLinks(false)} className={`${s.navLink}`}>Log In</NavLink></div>}
 							</div>

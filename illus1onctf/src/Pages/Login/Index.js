@@ -174,7 +174,7 @@ const Login = () => {
 					zIndex: '1000'
 				}} color="var(--bs-primary)" loading={isLoading} speedMultiplier={2} />
 			}
-			{!isLoading && <div className='container'>
+			{!isLoading && <div className={`container `}>
 				<div className='row mt-5'>
 
 

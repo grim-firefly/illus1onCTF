@@ -3,7 +3,7 @@ import Paginator from '../../Common/Paginator';
 import Filters from './Components/Filters/Filters';
 import { useEffect } from 'react';
 import { PropagateLoader } from 'react-spinners';
-import  axios  from 'axios';
+import axios from 'axios';
 import { Table } from 'antd';
 
 const Leaderboard = () => {

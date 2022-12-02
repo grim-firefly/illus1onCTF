@@ -4,6 +4,7 @@ import Carousel from './Components/Carousel/Index';
 import s from './style.module.css';
 import Service from './Asset/Services.png';
 import OutlineButton from './../../Common/Button/Outline/Index';
+import Footer from './../../Common/Footer/Index';
 const About = () => {
 	return (
 		<>
@@ -87,6 +88,7 @@ const About = () => {
 					</div>
 				</div>
 			</section>
+			<Footer/>
 
 		</>
 	);

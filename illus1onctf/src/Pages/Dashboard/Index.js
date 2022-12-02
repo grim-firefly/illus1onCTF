@@ -9,7 +9,7 @@ import Input from './../../Common/Input/Index';
 import OutlineButton from './../../Common/Button/Outline/Index';
 const Dashboard = () => {
 	return (
-		<div className={`${s.dashboardSpace}`}>
+		<div className={` `}>
 			<div className="container">
 				<div className="row">
 					<div className="col-xl-8 col-lg-8 col-12">

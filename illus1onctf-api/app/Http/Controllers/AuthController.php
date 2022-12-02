@@ -33,6 +33,9 @@ class AuthController extends Controller
 			'password' => $data['password'],
 		]);
 		if ($user) {
+			$user->scoreboard()->create([
+				'points' => 0,
+			]);
 			return response()->json([
 				'status' => 'success',
 				'message' => 'User created successfully',

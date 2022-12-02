@@ -60,7 +60,7 @@ const Home = () => {
 				<>
 					<Header />
 					<Outlet />
-					<Footer/>
+					
 				</>
 			}
 

@@ -5,7 +5,10 @@ import Carousel from './Components/Carousel/Index';
 const About = () => {
 	return (
 		<>
-			<Carousel />
+			<div className="container">
+
+				<Carousel />
+			</div>
 
 		</>
 	);

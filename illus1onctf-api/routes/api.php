@@ -27,6 +27,7 @@ Route::get('challenges', [ChallengeController::class, 'index']);
 Route::get('challenges/{challenge}', [ChallengeController::class, 'show']);
 
 Route::post('submit', [ChallengeController::class, 'submit'])->middleware('auth:api');
+Route::get('submissions', [ChallengeController::class, 'submissions'])->middleware('auth:api');
 
 
 

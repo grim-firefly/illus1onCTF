@@ -10,6 +10,7 @@ import ChallengeList from './../Pages/Challenges/Components/ChallengeList/Index'
 import Contest from './../Pages/Contest/Index';
 import Leaderboard from './../Pages/Leaderboard/Index';
 import RequireUserAuth from './Components/RequireUserAuth';
+import Submissions from './../Pages/Submissions/Index';
 
 
 
@@ -32,8 +33,10 @@ const MainRoutes = () => {
 				</Route>
 				<Route path='contest' element={<Contest />} >
 				</Route>
+				<Route path='submissions' element={<Submissions />} >
+				</Route>
 
-				
+
 				<Route path='leaderboard' element={<Leaderboard />}>
 				</Route>
 

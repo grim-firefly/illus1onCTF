@@ -145,4 +145,18 @@ class ChallengeController extends Controller
             'message' => 'Submission failed',
         ], 400);
     }
+
+    public function submissions(Request $request)
+    {
+        // ['id', 'flag', 'solved', 'created_at']
+        if ($request->user()) {
+            $submissions = $request->user()->submissions()->with(['challenges'=>function($query){
+                $query->select('id','title')->get();
+            }])->get(['id', 'flag', 'solved', 'created_at','challenge_id']);
+            return response()->json([
+                'submissions' => $submissions,
+                
+            ], 200);
+        }
+    }
 }

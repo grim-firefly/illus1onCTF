@@ -9,4 +9,8 @@ class Submission extends Model
 {
     use HasFactory;
     protected $guarded = [];
+    public function challenges()
+    {
+        return $this->belongsTo(Challenge::class, 'challenge_id', 'id');
+    }
 }

@@ -78,7 +78,7 @@ const Header = () => {
 								</div>
 								<ul className={`dropdown-menu ${s.dropdownMenu}`} aria-labelledby="useroptions" >
 									<li><Link  className={`dropdown-item ${s.dropdownitem}`} >Profile</Link></li>
-									<li><Link  className={`dropdown-item ${s.dropdownitem}`} >Hello</Link></li>
+									<li><Link to='submissions'  className={`dropdown-item ${s.dropdownitem}`} >Submissions</Link></li>
 									<li><Link  onClick={handleLogout} className={`dropdown-item ${s.dropdownitem}`}>Log out</Link></li>
 								</ul>
 							</div>}

@@ -14,7 +14,7 @@ const lists = [
 
 
 
-const Filters = () => {
+const Filters = ({ handleSearch }) => {
 	const [activeCategory, setActiveCategory] = useState(0);
 	const handleli = (index) => {
 		setActiveCategory(index)
@@ -24,7 +24,7 @@ const Filters = () => {
 			<div className={`${s.filtersHeading}`}>Filters</div>
 
 			<div className={`${s.filterbody}`}>
-				<Input type="text" placeholder="Search By Name" name="searchchallenges" icon={BsSearch} />
+				<Input type="text" placeholder="Search By Email" name="searchchallenges" onChange={(e) => handleSearch(e.target.value)} icon={BsSearch} />
 			</div>
 			<div className={`${s.filterbody}`}>
 				<div className={`${s.filterbodyheading}`}>Register in Contest</div>
@@ -47,7 +47,7 @@ const Filters = () => {
 					}
 				</ul>
 			</div>
-			
+
 		</div>
 
 	);

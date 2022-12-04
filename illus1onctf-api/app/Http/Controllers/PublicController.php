@@ -10,12 +10,15 @@ class PublicController extends Controller
 {
     public function leaderboard(Request $request)
     {
-
-        $users = Scoreboard::with(['users' => function ($query) {
-            $query->select('id', 'email');
-        }])->orderBy('points', 'desc')->get(['id', 'user_id', 'points']);
+        $page = $request->input('page', 1);
+        $pageSize = $request->input('pageSize', 10);
+        $search = $request->input('search', '');
+        $users = Scoreboard::join('users', 'users.id', '=', 'scoreboards.user_id')->where('users.email', 'like', '%' . $search . '%');
+        $total=$users->count();
+        $users=$users->orderBy('points', 'desc')->offset(($page - 1) * $pageSize)->limit($pageSize)->get(['scoreboards.id', 'scoreboards.user_id', 'scoreboards.points', 'users.email']);
         return response()->json([
             'ScoreList' => $users,
+            'total' => $total,
         ], 200);
     }
 }

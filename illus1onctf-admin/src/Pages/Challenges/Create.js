@@ -10,6 +10,8 @@ import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import SelectBox from '../../Common/SelectBox/Index';
 import JoditEditor from 'jodit-react';
+import { Upload } from 'antd';
+import { InboxOutlined } from '@ant-design/icons';
 
 
 const CreateChallenge = () => {
@@ -84,7 +86,19 @@ const CreateChallenge = () => {
 
 
 	}
+	const props = {
+		name: 'file',
+		multiple: true,
+		listType: 'picture-card',
+		showUploadList:{showPreviewIcon:false,showRemoveIcon:true},
+		onChange(info) {
+			console.log(info.fileList);
+		},
+		onDrop(e) {
+			// console.log('Dropped files', e.dataTransfer.files[0]);
+		}
 
+	}
 
 	return (
 		<>
@@ -138,6 +152,16 @@ const CreateChallenge = () => {
 
 								/>
 							</div>
+							{/* <div className='mt-1'>
+								<Upload.Dragger {...props}>
+									<p className="ant-upload-drag-icon">
+										<InboxOutlined />
+
+									</p>
+									<p className="ant-upload-text">Click or drag file to this area to upload</p>
+
+								</Upload.Dragger>
+							</div> */}
 							<div className='mt-1'>
 								<SelectBox options={categories} placeholder="Category" onChange={(e) => {
 									setCategory(e.target.value)

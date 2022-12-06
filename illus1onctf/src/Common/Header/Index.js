@@ -76,7 +76,7 @@ const Header = () => {
 
 									<img className={`${s.user_img}`} src="https://secure.gravatar.com/avatar/a9d93a0b0dbbbef556a04eefcfd14079.jpg?s=200&d=robohash&r=x" alt="img" srcSet="" />
 								</div>
-								<ul className={`dropdown-menu ${s.dropdownMenu}`} aria-labelledby="useroptions" >
+								<ul className={`dropdown-menu ${s.dropdownMenu} `} aria-labelledby="useroptions" >
 									<li><Link  className={`dropdown-item ${s.dropdownitem}`} >Profile</Link></li>
 									<li><Link to='submissions'  className={`dropdown-item ${s.dropdownitem}`} >Submissions</Link></li>
 									<li><Link  onClick={handleLogout} className={`dropdown-item ${s.dropdownitem}`}>Log out</Link></li>

@@ -52,6 +52,8 @@
 	color: #000 !important;
 	border: none !important;
 	box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1) !important;
+	
+
 }
 
 .dropdownitem {
@@ -137,6 +139,7 @@
 		font-size: 24px;
 		padding: 10px 10px;
 		border-radius: 0.25rem ;
+		z-index: 1;
 
 	}
 }
